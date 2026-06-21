@@ -868,6 +868,23 @@
           required
         />
       </div>
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="servizio">
+            Servizio richiesto
+        </label>
+
+        <select
+            class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+            id="servizio"
+            name="servizio"
+            required
+        >
+            <option value="" disabled selected>Seleziona un servizio</option>
+            <option value="Sito web">Sito web</option>
+            <option value="Software">Software</option>
+            <option value="Automazione">Automazione</option>
+        </select>
+       </div>
 
       <div class="flex flex-col gap-2">
         <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="messaggio">
@@ -1017,7 +1034,8 @@
         const payload = {
         nome: document.getElementById("nome").value,
         email: document.getElementById("email").value,
-        messaggio: document.getElementById("messaggio").value
+        messaggio: document.getElementById("messaggio").value,
+        servizio: document.getElementById("servizio").value
         };
 
         try {

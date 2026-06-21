@@ -1,23 +1,34 @@
 export async function onRequestPost(context) {
-
   const { request, env } = context;
 
   try {
-
     const data = await request.json();
 
-    const nome = data.nome?.trim();
-    const email = data.email?.trim();
-    const messaggio = data.messaggio?.trim();
+    let { nome, email, messaggio, servizio } = data;
 
-    if (!nome || !email || !messaggio) {
+    // ---------------------------
+    // 1. VALIDAZIONE BASE
+    // ---------------------------
+    if (!nome || !email || !messaggio || !servizio) {
       return Response.json(
         { success: false, error: "Campi mancanti" },
         { status: 400 }
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // ---------------------------
+    // 2. NORMALIZZAZIONE (anti injection base)
+    // ---------------------------
+    nome = nome.toString().trim();
+    email = email.toString().trim().toLowerCase();
+    messaggio = messaggio.toString().trim();
+    servizio = servizio.toString().trim();
+
+    // ---------------------------
+    // 3. VALIDAZIONE EMAIL SERIA
+    // ---------------------------
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(email)) {
       return Response.json(
@@ -26,21 +37,66 @@ export async function onRequestPost(context) {
       );
     }
 
-    if (messaggio.length > 2000) {
+    // ---------------------------
+    // 4. WHITELIST SERVIZIO (IMPORTANTISSIMO)
+    // ---------------------------
+    const allowedServices = [
+      "Sito web",
+      "Software",
+      "Automazione"
+    ];
+
+    if (!allowedServices.includes(servizio)) {
       return Response.json(
-        { success: false, error: "Messaggio troppo lungo" },
+        { success: false, error: "Servizio non valido" },
         { status: 400 }
       );
     }
 
+    // ---------------------------
+    // 5. LIMITI ANTI-SPAM
+    // ---------------------------
+    if (nome.length > 100 || messaggio.length > 3000) {
+      return Response.json(
+        { success: false, error: "Input troppo lungo" },
+        { status: 400 }
+      );
+    }
+
+    // blocco injection base
+    const forbiddenPatterns = [
+      "<script",
+      "http://",
+      "https://",
+      "DROP ",
+      "SELECT ",
+      "--",
+      "/*",
+      "*/"
+    ];
+
+    const allText = `${nome} ${messaggio}`;
+
+    if (
+      forbiddenPatterns.some(p =>
+        allText.toUpperCase().includes(p.toUpperCase())
+      )
+    ) {
+      return Response.json(
+        { success: false, error: "Contenuto non valido" },
+        { status: 400 }
+      );
+    }
+
+    // ---------------------------
+    // 6. MESSAGGIO TELEGRAM
+    // ---------------------------
     const text =
 `📩 Nuova richiesta dal sito
 
-👤 Nome:
-${nome}
-
-📧 Email:
-${email}
+👤 Nome: ${nome}
+📧 Email: ${email}
+🧩 Servizio: ${servizio}
 
 💬 Messaggio:
 ${messaggio}`;
@@ -59,21 +115,12 @@ ${messaggio}`;
       }
     );
 
-    return Response.json({
-      success: true
-    });
+    return Response.json({ success: true });
 
   } catch (err) {
-
     return Response.json(
-      {
-        success: false,
-        error: "Errore server"
-      },
-      {
-        status: 500
-      }
+      { success: false, error: "Errore server" },
+      { status: 500 }
     );
-
   }
 }
