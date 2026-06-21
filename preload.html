@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DATA FLUX NETWORK | PRELOAD</title>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#848484",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e0deeb",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1b24",
+                        "surface-bright": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "data-blue": "#0000FF",
+                        "on-primary-fixed": "#1b1b1d",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed-dim": "#c7c6c6",
+                        "on-background": "#1a1c1c",
+                        "terminal-black": "#000000",
+                        "on-secondary-container": "#62626d",
+                        "secondary-fixed": "#e3e1ee",
+                        "surface-container-low": "#f3f3f3",
+                        "primary-fixed": "#e5e1e4",
+                        "tertiary": "#000000",
+                        "surface-container-highest": "#e2e2e2",
+                        "flux-gray": "#EDEDED",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#c8c6c8",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed-dim": "#c6c5d2",
+                        "on-surface-variant": "#47464a",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1b1b1d",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "on-primary-container": "#858386",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#77767b",
+                        "primary-fixed-dim": "#c8c6c8",
+                        "secondary": "#5d5d68",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#5f5e60",
+                        "tertiary-container": "#1b1c1c",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container": "#eeeeee",
+                        "on-primary-fixed-variant": "#474649",
+                        "surface": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f1",
+                        "primary": "#000000",
+                        "on-tertiary-fixed-variant": "#464747",
+                        "outline-variant": "#c8c5ca",
+                        "on-secondary-fixed-variant": "#464650",
+                        "background": "#f9f9f9",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed": "#e3e2e2",
+                        "brand-teal": "#00D1B2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "max-width": "1440px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-mono-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-mono-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-display": ["96px", {"lineHeight": "100%", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-lg": ["48px", {"lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-mono-sm": ["12px", {"lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "110%", "fontWeight": "800"}],
+                        "label-mono-md": ["14px", {"lineHeight": "100%", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #ffffff;
+            overflow: hidden;
+            margin: 0;
+            cursor: crosshair;
+        }
+
+        /* Technical Grid Pattern from SCREEN_9 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .data-flux-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text-container {
+            position: relative;
+            z-index: 5;
+            overflow: visible;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Bold industrial font (Inter 900) - Clean edges, solid black */
+        .network-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 10vw;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            color: #000000;
+            text-transform: uppercase;
+            user-select: none;
+            display: flex;
+            gap: 0;
+            transition: transform 0.1s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .network-text { font-size: 15vw; }
+        }
+
+        .corner {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-color: #e2e2e2;
+            pointer-events: none;
+        }
+        .corner-tl { top: 32px; left: 32px; border-top: 1px solid; border-left: 1px solid; }
+        .corner-tr { top: 32px; right: 32px; border-top: 1px solid; border-right: 1px solid; }
+        .corner-bl { bottom: 32px; left: 32px; border-bottom: 1px solid; border-left: 1px solid; }
+        .corner-br { bottom: 32px; right: 32px; border-bottom: 1px solid; border-right: 1px solid; }
+
+        /* Industrial Scanner Line - Teal from IMAGE_2 */
+        .high-visibility-scanner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #00D1B2;
+            box-shadow: 0 0 8px rgba(0, 209, 178, 0.8), 0 0 15px rgba(0, 209, 178, 0.4);
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(-10vh);
+        }
+
+        .scanner-active {
+            animation: scan-once 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes scan-once {
+            0% { transform: translateY(-10vh); opacity: 0; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+
+        /* Reveal elements */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Subtle scanline texture overlay */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.01) 50%);
+            background-size: 100% 4px;
+            z-index: 99;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-surface">
+<!-- Technical Scanlines -->
+<div class="scanline"></div>
+<div class="high-visibility-scanner" id="scanner"></div>
+<!-- Framing Corners -->
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+<main class="data-flux-container">
+<div class="text-container" id="text-wrapper">
+<!-- Logo from IMAGE_2, revealed after scan -->
+<img alt="Network Logo" class="reveal-element h-24 md:h-32 w-auto mb-8" id="revealed-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe1y9J3BPLgUPD0zRm6dJvkrkZyRtvkTTHVqZb-trLHVPo4_U6twIDAK6JxOm_VSM4pYs3aFOVeSeXrVjVdzpavqRl7rhotOEQOxxGkOW5o67Vz0hGieCg_BR7Rwcj1x0sCWtUqKikjL-Cl5E5S6BxAKxRj9TyHrlXjSyWdjjnXnxM-0typj8eLqP8CgJWi_TNXqk3-Zmu_OphS59zXXyhSMCxcBHXibpslWkwu0UvQ9_08mb9CsIqhdgeXzgBAdlYuq-vVfRWr2g"/>
+<!-- Main Text - Solid Industrial Font from SCREEN_4 -->
+<h1 class="network-text" id="target-text">NETWORK</h1>
+<!-- Slogan, revealed after scan -->
+<p class="reveal-element font-label-mono-md text-label-mono-md text-on-surface-variant uppercase tracking-[0.2em] mt-8" id="revealed-slogan">
+                LANCIAMO IL TUO NETWORK
+            </p>
+</div>
+</main>
+<!-- Interactions Script -->
+<script>
+        const targetText = document.getElementById('target-text');
+        const scanner = document.getElementById('scanner');
+        const logo = document.getElementById('revealed-logo');
+        const slogan = document.getElementById('revealed-slogan');
+
+        const initialPhrase = "NETWORK";
+        const finalPhrase = "TEKWORN";
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        
+        let animationSequenceStarted = false;
+
+        function startSequence() {
+            if (animationSequenceStarted) return;
+            animationSequenceStarted = true;
+
+            // Trigger Scanner
+            scanner.classList.add('scanner-active');
+
+            // Monitor scanner position for scramble trigger
+            const checkScanner = () => {
+                const scannerRect = scanner.getBoundingClientRect();
+                const textRect = targetText.getBoundingClientRect();
+                
+                // Scramble when scanner is passing through the vertical center of the text
+                if (scannerRect.bottom > textRect.top + (textRect.height / 2)) {
+                    scrambleText();
+                    return; 
+                }
+                requestAnimationFrame(checkScanner);
+            };
+            requestAnimationFrame(checkScanner);
+        }
+
+        function scrambleText() {
+            let iteration = 0;
+            const scrambleInterval = setInterval(() => {
+                targetText.innerText = targetText.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return finalPhrase[index];
+                        }
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+                
+                if (iteration >= finalPhrase.length) {
+                    clearInterval(scrambleInterval);
+                    finalizeAnimation();
+                }
+                iteration += 1 / 4; // Controls the speed of the shuffle "cleanliness"
+            }, 40);
+        }
+
+        function finalizeAnimation() {
+            setTimeout(() => {
+                logo.classList.add('active');
+                slogan.classList.add('active');
+            }, 300);
+        }
+
+        // Trigger on load
+        window.addEventListener('load', () => {
+            setTimeout(startSequence, 600);
+        });
+
+        // Mouse parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 100;
+            const y = (window.innerHeight / 2 - e.pageY) / 100;
+            targetText.style.transform = `translate(${x}px, ${y}px)`;
+            logo.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+            slogan.style.transform = `translate(${x * 1.5}px, ${y * 1.5}px)`;
+        });
+    </script>
+</body></html>

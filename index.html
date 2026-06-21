@@ -3,671 +3,949 @@
 <html class="light" lang="it"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TEKWORN</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<title>TEKWORN - Automazione e Crescita Digitale</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-highest": "#e1e2ed",
+                "surface-container-high": "#e7e7f3",
+                "on-surface-variant": "#434655",
+                "surface-container-low": "#f3f3fe",
+                "on-secondary-container": "#006172",
+                "surface-bright": "#faf8ff",
+                "surface-container-lowest": "#ffffff",
+                "primary": "#004ac6",
+                "outline": "#737686",
+                "on-primary-fixed": "#00174b",
+                "secondary-fixed-dim": "#4cd7f6",
+                "on-tertiary-container": "#ffede6",
+                "background": "#ffffff",
+                "primary-fixed-dim": "#b4c5ff",
+                "surface-tint": "#0053db",
+                "on-secondary-fixed-variant": "#004e5c",
+                "inverse-on-surface": "#f0f0fb",
+                "on-tertiary-fixed": "#360f00",
+                "on-background": "#0F172A",
+                "on-primary-container": "#eeefff",
+                "tertiary-fixed-dim": "#ffb596",
+                "on-secondary-fixed": "#001f26",
+                "inverse-surface": "#2e3039",
+                "outline-variant": "#c3c6d7",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#bc4800",
+                "error": "#ba1a1a",
+                "primary-fixed": "#dbe1ff",
+                "surface-dim": "#d9d9e5",
+                "primary-container": "#2563eb",
+                "surface-container": "#ededf9",
+                "secondary-fixed": "#acedff",
+                "on-primary": "#ffffff",
+                "tertiary": "#943700",
+                "inverse-primary": "#b4c5ff",
+                "secondary-container": "#57dffe",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed": "#ffdbcd",
+                "secondary": "#00687a",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "surface": "#ffffff",
+                "on-surface": "#0F172A",
+                "on-tertiary": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "surface-variant": "#e1e2ed",
+                "on-primary-fixed-variant": "#003ea8"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "3xl": "1.5rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-lg": "2rem",
+                "stack-sm": "0.5rem",
+                "section-padding": "clamp(4rem, 8vw, 8rem)",
+                "gutter": "1.5rem",
+                "stack-md": "1rem",
+                "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                "sans": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .dashboard-shadow {
-            box-shadow: 0px 20px 40px rgba(15, 23, 42, 0.08);
-        }
-        .hero-gradient {
-            background: linear-gradient(135deg, #004ac6 0%, #2563eb 100%);
-        }
-        body {
-            scroll-behavior: smooth;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #ffffff; 
+            color: #0F172A; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
         }
         
-        /* Anagram Animation Styles */
-        .anagram-container {
-            position: relative;
-            height: 360px;
-            width: 360px;
-            margin: 0 auto;
+        h2 { 
+            font-size: clamp(1.75rem, 5vw, 3rem) !important; 
+            font-weight: 700 !important; 
+            color: #0F172A !important; 
+            line-height: 1.15 !important; 
+            letter-spacing: -0.02em !important; 
         }
-        .letter-block {
-            position: absolute;
-            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            display: flex;
+
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .section {
+            padding-top: clamp(4rem, 8vw, 8rem);
+            padding-bottom: clamp(4rem, 8vw, 8rem);
+        }
+
+        .section--alt {
+            background-color: #F8FAFC;
+            border-top: 1px solid #c3c6d750;
+            border-bottom: 1px solid #c3c6d750;
+        }
+
+        .custom-card {
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        :root {
+            --shadow-hover: 0 20px 40px -8px rgba(37, 99, 235, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+            --duration: 0.3s;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --color-border: #E2E8F0;
+            --radius-xl: 1.5rem;
+        }
+
+        .custom-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(37,99,235,0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            user-select: none;
-            z-index: 10;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn--primary {
+            background: linear-gradient(to right, #2563EB, #06B6D4);
+            color: #fff;
+        }
+
+        .btn--primary:hover {
+            box-shadow: 0 8px 24px rgba(37,99,235,0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            border: 1px solid #E2E8F0;
+            color: #64748B;
+        }
+
+        .btn--outline:hover {
+            border-color: #2563EB;
+            color: #2563EB;
+        }
+
+        .hero-grid {
+            background-image: 
+                linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .cta-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .cta-grid h2 {
+            color: #ffffff !important;
+        }
+
+        /* Animation System */
+        .anim {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .anim.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .custom-card.anim.visible {
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            will-change: auto;
+        }
+
+        .anim-delay-1 { transition-delay: 100ms; }
+        .anim-delay-2 { transition-delay: 200ms; }
+        .anim-delay-3 { transition-delay: 300ms; }
+        .anim-delay-4 { transition-delay: 400ms; }
+        .anim-delay-5 { transition-delay: 500ms; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.05);
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #004ac6 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav#main-nav {
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: linear-gradient(to right, #2563EB, #06B6D4);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.closed {
+            transform: translateX(100%);
         }
     </style>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-container-high": "#e6e8ea",
-                        "on-secondary-fixed-variant": "#004e5c",
-                        "on-tertiary-fixed": "#131b2e",
-                        "on-tertiary-container": "#eef0ff",
-                        "surface-tint": "#0053db",
-                        "outline": "#737686",
-                        "surface-container-low": "#f2f4f6",
-                        "on-primary-fixed": "#00174b",
-                        "on-secondary-fixed": "#001f26",
-                        "on-tertiary-fixed-variant": "#3f465c",
-                        "error-container": "#ffdad6",
-                        "primary": "#004ac6",
-                        "surface-dim": "#d8dadc",
-                        "primary-fixed": "#dbe1ff",
-                        "surface-container-highest": "#e0e3e5",
-                        "surface-variant": "#e0e3e5",
-                        "background": "#f7f9fb",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-fixed-variant": "#003ea8",
-                        "on-surface-variant": "#434655",
-                        "secondary-container": "#57dffe",
-                        "on-secondary-container": "#006172",
-                        "on-error-container": "#93000a",
-                        "on-primary-container": "#eeefff",
-                        "primary-fixed-dim": "#b4c5ff",
-                        "secondary-fixed-dim": "#4cd7f6",
-                        "primary-container": "#2563eb",
-                        "outline-variant": "#c3c6d7",
-                        "inverse-primary": "#b4c5ff",
-                        "surface-container-lowest": "#ffffff",
-                        "tertiary-fixed": "#dae2fd",
-                        "surface": "#f7f9fb",
-                        "on-surface": "#191c1e",
-                        "tertiary-container": "#656d84",
-                        "on-primary": "#ffffff",
-                        "tertiary": "#4d556b",
-                        "error": "#ba1a1a",
-                        "on-error": "#ffffff",
-                        "inverse-surface": "#2d3133",
-                        "tertiary-fixed-dim": "#bec6e0",
-                        "secondary": "#00687a",
-                        "surface-bright": "#f7f9fb",
-                        "on-secondary": "#ffffff",
-                        "secondary-fixed": "#acedff",
-                        "surface-container": "#eceef0",
-                        "on-background": "#191c1e",
-                        "inverse-on-surface": "#eff1f3"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1.5rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "3xl": "64px",
-                        "margin-mobile": "16px",
-                        "unit": "8px",
-                        "margin-desktop": "48px",
-                        "gutter": "24px",
-                        "md": "16px",
-                        "lg": "24px",
-                        "sm": "8px",
-                        "2xl": "48px",
-                        "xs": "4px",
-                        "max-width": "1400px",
-                        "xl": "32px"
-                    },
-                    "fontFamily": {
-                        "label-sm": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "display-xl": ["Inter"],
-                        "body-md": ["Inter"],
-                        "display-lg": ["Inter"],
-                        "headline-lg-mobile": ["Inter"],
-                        "label-md": ["Inter"],
-                        "headline-lg": ["Inter"],
-                        "headline-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "display-xl": ["60px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
-                    }
-                },
-            },
-        }
-    </script>
 </head>
-<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-surface/80 glass-nav border-b border-outline-variant/30 shadow-sm">
-<div class="max-w-max-width mx-auto px-margin-desktop py-4 flex justify-between items-center">
-<a class="font-display-lg text-display-lg tracking-tighter text-on-surface" href="#">TEKWORN</a>
-<div class="hidden md:flex gap-xl items-center">
-<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md transition-all" href="#hero">Home</a>
-<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" href="#chi-siamo">Chi siamo</a>
-<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" href="#servizi">Servizi</a>
-<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" href="#progetti">Progetti</a>
-<a class="text-on-surface-variant hover:text-primary font-label-md text-label-md transition-all" href="#contatti">Contatti</a>
-</div>
-<a class="bg-primary text-white px-lg py-3 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all shadow-md" href="#contatti">
-                Consulenza gratuita
-            </a>
-</div>
-</nav>
-<!-- Hero Section -->
-<section class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto overflow-hidden" id="hero">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
-<div data-aos="fade-up" data-aos-duration="800">
-<h1 class="font-display-xl text-display-xl text-on-surface mb-md max-w-2xl">
-                    Automatizziamo il lavoro. <span class="text-primary">Acceleriamo la crescita.</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl">
-                    TEKWORN aiuta aziende e professionisti a eliminare attività ripetitive attraverso automazioni intelligenti, software su misura e soluzioni digitali progettate per aumentare efficienza, produttività e competitività.
-                </p>
-<div class="flex flex-wrap gap-md">
-<a class="bg-primary text-on-primary px-xl py-4 rounded-full font-label-md text-label-md hover:translate-y-[-2px] transition-all shadow-lg flex items-center gap-sm" href="#servizi">
-                        Scopri i Servizi
-                        <span class="material-symbols-outlined">arrow_forward</span>
+<body id="home">
+<!-- Top Navigation Bar -->
+<nav class="fixed w-full top-0 z-[100] transition-all duration-300 backdrop-blur-xl bg-transparent" id="main-nav">
+<div class="container flex items-center justify-between py-4">
+<!-- Logo -->
+<a class="flex items-center gap-3 group" href="#home">
+<img alt="TEKWORN Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeLFP68XF9w_LS6KhfpLG07b1FEhd2NifsIv__dRi1QkTpIZXi-YYTpePq5sNc79_Sez_Fa0kEAtLs_kASxC7QTrek07ZJXU_GuSWyKt5iTxaaTeEX7WBp_M7eYCZqD8L-XamAcCgHRKNVsKgkhVhggr3zNjD16m-Uj67zeTORspuD1Lv6BDD3pl6wjJSdi4jz7uKATIXHtyGSi7SLCie3Y2ZJVNxCqjCC9CNtZjqF_GpyOj6UEL-rQzh32i4vLSphmDvrnfObzcrX"/>
+<span class="text-2xl font-bold tracking-tight text-primary">TEKWORN</span>
 </a>
-<a class="bg-surface-container-lowest text-on-surface border border-outline-variant px-xl py-4 rounded-full font-label-md text-label-md hover:bg-surface-container-low transition-all" href="#contatti">
-                        Inizia Ora
-                    </a>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center gap-8">
+<a class="nav-link text-sm text-on-surface font-medium" href="#home">Home</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#chi-siamo">Chi siamo</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#servizi">Servizi</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#progetti">Progetti</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#contatti">Contatti</a>
 </div>
+<!-- Action Button -->
+<div class="hidden md:block">
+<a class="btn btn--primary" href="#contatti">Consulenza gratuita</a>
 </div>
-<!-- Hero Visual: SaaS Dashboard -->
-<div class="relative mt-xl lg:mt-0" data-aos="fade-left" data-aos-duration="1000">
-<div class="bg-white rounded-2xl border border-outline-variant/50 p-lg dashboard-shadow relative overflow-hidden">
-<!-- Dashboard Header -->
-<div class="flex items-center justify-between mb-xl">
-<div class="flex items-center gap-sm">
-<div class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-sm">dashboard</span>
-</div>
-<span class="font-label-md text-on-surface">Dashboard Analitica</span>
-</div>
-<div class="flex gap-xs">
-<div class="w-2 h-2 rounded-full bg-error"></div>
-<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
-<div class="w-2 h-2 rounded-full bg-primary-container"></div>
-</div>
-</div>
-<!-- KPI Cards -->
-<div class="grid grid-cols-3 gap-md mb-xl">
-<div class="p-md rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-center">
-<p class="text-on-surface-variant text-[12px] uppercase tracking-wider mb-xs">Tempo Risparmiato</p>
-<p class="font-headline-md text-primary">120h/mese</p>
-</div>
-<div class="p-md rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-center">
-<p class="text-on-surface-variant text-[12px] uppercase tracking-wider mb-xs">Automazioni</p>
-<p class="font-headline-md text-primary">14</p>
-</div>
-<div class="p-md rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-center">
-<p class="text-on-surface-variant text-[12px] uppercase tracking-wider mb-xs">Efficienza</p>
-<p class="font-headline-md text-secondary">+45%</p>
-</div>
-</div>
-<!-- Chart Mockup -->
-<div class="h-48 w-full bg-surface-container-low rounded-xl relative overflow-hidden flex items-end px-md gap-sm">
-<div class="bg-primary-fixed w-full h-[30%] rounded-t-sm"></div>
-<div class="bg-primary-fixed w-full h-[50%] rounded-t-sm"></div>
-<div class="bg-primary-container w-full h-[85%] rounded-t-sm shadow-md"></div>
-<div class="bg-primary-fixed w-full h-[60%] rounded-t-sm"></div>
-<div class="bg-primary-fixed w-full h-[40%] rounded-t-sm"></div>
-<div class="bg-primary-container w-full h-[95%] rounded-t-sm shadow-md"></div>
-<div class="bg-primary-fixed w-full h-[75%] rounded-t-sm"></div>
-</div>
-<!-- Floating Interaction Cards -->
-<div class="absolute -top-4 -right-4 md:-right-8 p-md bg-white rounded-xl shadow-xl border border-outline-variant/30 animate-bounce flex items-center gap-sm" style="animation-duration: 4s;">
-<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<div>
-<p class="font-label-sm text-on-surface">Report Generato</p>
-<p class="text-[10px] text-on-surface-variant">Inviato a 12 stakeholder</p>
-</div>
-</div>
-<div class="absolute bottom-12 -left-4 md:-left-12 p-md bg-white rounded-xl shadow-xl border border-outline-variant/30 flex items-center gap-sm" data-aos="fade-right">
-<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
-<div>
-<p class="font-label-sm text-on-surface">Flow Ordini Completato</p>
-<p class="text-[10px] text-on-surface-variant">Nuova Automazione attiva</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Chi Siamo Section -->
-<section class="py-3xl bg-surface-container-lowest overflow-hidden" id="chi-siamo">
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-3xl items-center">
-<div class="order-2 lg:order-1 flex flex-col items-center" data-aos="fade-right">
-<div class="relative w-full max-w-[400px]">
-<div class="absolute inset-0 bg-primary/5 rounded-full scale-110 blur-3xl"></div>
-<div class="anagram-container relative bg-white rounded-2xl shadow-sm border border-outline-variant/50 p-4" id="anagram-box">
-<!-- Letters are generated by JS -->
-</div>
-<div class="mt-xl flex justify-center relative z-20">
-<button class="group flex items-center gap-sm bg-primary text-on-primary px-xl py-4 rounded-full font-label-md text-label-md hover:bg-primary-container transition-all shadow-md cursor-pointer pointer-events-auto" id="rearrange-btn">
-<span id="btn-text">Trasforma in TEKWORN</span>
-<span class="material-symbols-outlined group-hover:rotate-180 transition-transform">autorenew</span>
+<!-- Mobile Toggle -->
+<button class="md:hidden text-on-surface p-2 focus:outline-none" id="menu-toggle">
+<span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+<span class="material-symbols-outlined text-3xl hidden" id="close-icon">close</span>
 </button>
 </div>
+</nav>
+<!-- Mobile Menu Overlay -->
+<div class="fixed inset-0 bg-surface z-[90] flex flex-col items-center justify-center closed md:hidden" id="mobile-menu">
+<div class="flex flex-col items-center gap-10">
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#home">Home</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#chi-siamo">Chi siamo</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#servizi">Servizi</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#progetti">Progetti</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#contatti">Contatti</a>
+<a class="mt-4 btn btn--primary py-4 px-8" href="#contatti">Consulenza gratuita</a>
 </div>
 </div>
-<div class="order-1 lg:order-2" data-aos="fade-left">
-<span class="text-primary font-bold tracking-widest uppercase text-label-sm mb-md block">Chi Siamo</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-lg">L'Anagramma del Successo: NETWORK diventa TEKWORN</h2>
-<p class="font-body-md text-on-surface-variant mb-md">
-                        Il nostro nome non è casuale. <strong>TEKWORN</strong> è l'anagramma di <strong>NETWORK</strong>. Proprio come riorganizziamo le lettere per formare una nuova identità, riorganizziamo i processi aziendali per sbloccare nuovi livelli di efficienza.
+<main class="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden hero-grid">
+<!-- Background Orbs -->
+<div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-secondary-container/5 rounded-full blur-[100px] -z-10"></div>
+<div class="container section w-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+<!-- Left Content -->
+<div class="flex flex-col gap-stack-md z-10">
+<div class="anim flex items-center gap-2 bg-primary/10 border border-primary/20 w-fit px-4 py-1.5 rounded-full">
+<span class="w-2 h-2 bg-primary rounded-full pulse-dot"></span>
+<span class="text-primary text-xs font-semibold uppercase tracking-wider">Partner tecnologico per la crescita</span>
+</div>
+<h1 class="anim anim-delay-1 text-4xl lg:text-6xl font-bold leading-tight">
+                        Automatizziamo il lavoro. <br/>
+<span class="gradient-text">Acceleriamo la crescita.</span>
+</h1>
+<p class="anim anim-delay-2 text-lg text-on-surface-variant max-w-lg">
+                        TEKWORN aiuta aziende e professionisti a eliminare attività ripetitive con automazioni, software e sistemi digitali su misura. Progettiamo il futuro del tuo workflow.
                     </p>
-<p class="font-body-md text-on-surface-variant mb-xl">
-                        Siamo un team di strateghi digitali e sviluppatori con base in Sicilia, dedicati a trasformare la complessità in semplicità attraverso software personalizzati e automazioni che lavorano per te, non il contrario.
+<div class="anim anim-delay-3 flex flex-wrap gap-4 mt-4">
+<button class="btn btn--primary py-4 px-8 text-base">Prenota una consulenza gratuita</button>
+<button class="btn btn--outline py-4 px-8 text-base">Scopri come lavoriamo</button>
+</div>
+<!-- Trust Stats -->
+<div class="anim anim-delay-4 grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-outline-variant/30">
+<div>
+<div class="text-2xl font-bold text-primary">50+</div>
+<div class="text-sm text-on-surface-variant">Progetti</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-primary">98%</div>
+<div class="text-sm text-on-surface-variant">Soddisfazione</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-primary">24h</div>
+<div class="text-sm text-on-surface-variant">Risposta</div>
+</div>
+</div>
+</div>
+<!-- Right Content -->
+<div class="relative anim anim-delay-2 hidden lg:block">
+<div class="relative z-10 floating">
+<!-- Main Dashboard Frame -->
+<div class="glass-card p-4 rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Automazione Dashboard" class="w-full h-auto rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZPIcYQ-PuXy8ltHCvA6YUl3rpaX-fUMuPqAW_Hm1WuDt30qX4X_rPmemiRnMhMup7EkRibFjopo9BEusrgoJNiPg3nrS_9ifKqvjMkHNMPVvmVqDms7WEFMEK6maeNatd74y2v7H35Ns88wGTzsy9R7E6IVo1S1FxAS5heNki26u4tgNXzf2iIxh1_uenz7Pq2xkXrnxTKh-vivCkkFjuR6wHVIAIMmk_BigaSLEJCAahlHBE9A3iAnHAQsp3hErAEZzPtWafr81d"/>
+</div>
+<!-- Floating UI Elements -->
+<div class="absolute -top-6 -right-6 glass-card p-4 rounded-2xl floating transition-all duration-[8s] delay-700">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Efficiency</div>
+<div class="text-sm font-bold text-on-surface">+42% Optimization</div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-10 -left-10 glass-card p-5 rounded-2xl floating transition-all duration-[10s] delay-300">
+<div class="flex flex-col gap-2">
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">AI Analysis</div>
+<div class="flex items-center gap-2">
+<div class="h-2 w-24 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-4/5 bg-primary rounded-full"></div>
+</div>
+<span class="text-xs font-bold">80%</span>
+</div>
+<div class="text-[10px] text-primary font-semibold">Workflow Syncing...</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<section class="section section--alt anim" id="chi-siamo">
+<div class="container">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center mb-16">
+<div class="flex flex-col gap-stack-md anim">
+<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 w-fit px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">shuffle</span>
+<span class="text-primary text-xs font-semibold uppercase tracking-wider">L'origine del nome</span>
+</div>
+<h2 class="tracking-tight">
+                        Da <span class="line-through text-outline">NETWORK</span> a <br/>
+<span class="gradient-text">TEKWORN</span>
+</h2>
+<p class="text-lg text-on-surface-variant">
+                        Come riorganizziamo le lettere per formare il nostro nome, così riorganizziamo i processi aziendali per creare efficienza. TEKWORN nasce dall'idea di trasformare reti complesse in flussi di lavoro ottimizzati e intelligenti.
                     </p>
-<div class="grid grid-cols-2 gap-lg">
-<div class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-primary">public</span>
-<span class="font-label-md">Portata Nazionale</span>
 </div>
-<div class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-primary">precision_manufacturing</span>
-<span class="font-label-md">Precisione Tecnica</span>
-</div>
-<div class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-primary">auto_fix_high</span>
-<span class="font-label-md">Automazione Totale</span>
-</div>
-<div class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-primary">groups</span>
-<span class="font-label-md">Approccio Tailored</span>
+<div class="relative anim anim-delay-2">
+<div class="custom-card border-primary/10">
+<div class="flex flex-col gap-4">
+<div class="text-primary font-bold text-xl">La nostra Visione</div>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+<p class="text-on-surface-variant italic">
+                                "Non ci limitiamo a implementare software; ridisegniamo il modo in cui le persone interagiscono con la tecnologia, rendendo l'automazione un alleato invisibile ma potente."
+                            </p>
 </div>
 </div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="custom-card anim anim-delay-1">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">target</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Precisione</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Eliminiamo l'errore umano automatizzando i compiti ripetitivi con accuratezza millimetrica.</p>
+</div>
+<div class="custom-card anim anim-delay-2">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Innovazione</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Utilizziamo le ultime tecnologie AI per anticipare le necessità del mercato e del tuo business.</p>
+</div>
+<div class="custom-card anim anim-delay-3">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Crescita</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Scaliamo i tuoi processi per permetterti di concentrarti solo su ciò che porta valore reale.</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Servizi Section -->
-<section class="py-3xl" id="servizi">
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center mb-3xl">
-<span class="text-primary font-bold tracking-widest uppercase text-label-sm mb-md block">I Nostri Servizi</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Soluzioni che definiscono il futuro digitale</h2>
+<!-- Sezione Servizi -->
+<section class="section bg-white anim" id="servizi">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<h2 class="tracking-tight">Tecnologia che lavora <span class="gradient-text">per te</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Soluzioni digitali progettate per generare valore reale al tuo business.</p>
 </div>
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
-<!-- Servizio 1 -->
-<div class="bg-white p-lg rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-<div class="w-14 h-14 bg-primary-fixed rounded-xl flex items-center justify-center mb-lg">
-<span class="material-symbols-outlined text-primary text-[32px]">language</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Automazioni Aziendali -->
+<a class="group col-span-1 md:col-span-2 relative p-8 rounded-3xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 anim anim-delay-1" href="#contatti">
+<div class="absolute top-6 right-6 flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+<span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
+<span class="text-xs font-bold uppercase tracking-wider">Attivo</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Sviluppo Siti Web</h3>
-<p class="text-on-surface-variant font-body-md mb-lg">Massima visibilità e credibilità con portali istituzionali e vetrine digitali ad alte prestazioni.</p>
-<div class="flex flex-wrap gap-xs">
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">SEO Ready</span>
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Fast Loading</span>
+<div class="relative z-10 flex flex-col h-full justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md">
+<span class="material-symbols-outlined text-white text-3xl">zap</span>
 </div>
+<div>
+<h3 class="text-3xl font-bold mb-4">Automazioni Aziendali</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-white/10 text-white text-xs px-3 py-1 rounded-full border border-white/20">Flussi automatizzati</span>
+<span class="bg-white/10 text-white text-xs px-3 py-1 rounded-full border border-white/20">Integrazioni API</span>
+<span class="bg-white/10 text-white text-xs px-3 py-1 rounded-full border border-white/20">IA Generativa</span>
 </div>
-<!-- Servizio 2 -->
-<div class="bg-white p-lg rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-<div class="w-14 h-14 bg-secondary-fixed-dim rounded-xl flex items-center justify-center mb-lg">
-<span class="material-symbols-outlined text-on-secondary-container text-[32px]">apps</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Web App</h3>
-<p class="text-on-surface-variant font-body-md mb-lg">Strumenti operativi su misura accessibili da qualsiasi dispositivo per gestire il tuo business ovunque.</p>
-<div class="flex flex-wrap gap-xs">
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Cloud Based</span>
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Custom UI</span>
+<p class="text-white/80 max-w-xl text-base leading-relaxed">Ottimizziamo ogni fase del tuo workflow aziendale eliminando i colli di bottiglia e riducendo i tempi operativi fino al 70%.</p>
 </div>
 </div>
-<!-- Servizio 3 -->
-<div class="bg-white p-lg rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
-<div class="w-14 h-14 bg-tertiary-fixed rounded-xl flex items-center justify-center mb-lg">
-<span class="material-symbols-outlined text-tertiary text-[32px]">terminal</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Software Gestionali</h3>
-<p class="text-on-surface-variant font-body-md mb-lg">Soluzioni gestionali progettate intorno al tuo workflow unico per ottimizzare risorse e inventario.</p>
-<div class="flex flex-wrap gap-xs">
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Full Control</span>
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Integrable</span>
+<div class="flex items-center gap-2 text-white font-bold group-hover:gap-4 transition-all duration-300">
+                            Richiedi Demo <span class="material-symbols-outlined">arrow_forward</span>
 </div>
 </div>
-<!-- Servizio 4 -->
-<div class="bg-white p-lg rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
-<div class="w-14 h-14 bg-primary-container rounded-xl flex items-center justify-center mb-lg">
-<span class="material-symbols-outlined text-white text-[32px]">sync_alt</span>
+</a>
+<!-- Siti Web Professionali -->
+<a class="group custom-card anim anim-delay-2" href="#contatti">
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">language</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Automazioni</h3>
-<p class="text-on-surface-variant font-body-md mb-lg">Riduzione errori e scalabilità infinita attraverso l'integrazione di flussi di lavoro automatici.</p>
-<div class="flex flex-wrap gap-xs">
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">No Errors</span>
-<span class="bg-surface-container-low px-sm py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Scale Up</span>
+<div>
+<h3 class="text-xl font-bold mb-3 text-on-surface">Siti Web Professionali</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Design responsive</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">SEO Optimized</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Presenza digitale d'impatto con siti veloci, moderni e ottimizzati per convertire i visitatori in clienti.</p>
 </div>
 </div>
+<div class="btn btn--outline border-none !p-0 !bg-transparent group-hover:text-primary transition-colors">
+                            Richiedi Demo <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </div>
-<!-- Automation Highlight Case -->
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop mt-3xl" data-aos="zoom-in">
-<div class="bg-surface-container-lowest rounded-3xl p-xl border border-outline-variant/30 flex flex-col lg:flex-row items-center gap-xl">
-<div class="lg:w-1/3">
-<h4 class="font-headline-md text-on-surface mb-md">Esempi Pratici</h4>
-<ul class="space-y-md">
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-primary">check</span>
-<p class="font-body-md">Automazione prenotazioni per ristoranti con sincronizzazione calendari e notifiche SMS.</p>
-</li>
-<li class="flex items-start gap-sm">
-<span class="material-symbols-outlined text-primary">check</span>
-<p class="font-body-md">Flussi interni per aziende strutturate: dall'approvazione fatture al CRM automatico.</p>
-</li>
+</div>
+</a>
+<!-- Web App Personalizzate -->
+<a class="group custom-card anim anim-delay-3" href="#contatti">
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">app_registration</span>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-3 text-on-surface">Web App Personalizzate</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Soluzioni SaaS</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">User-Centric</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sviluppiamo applicazioni web scalabili che risolvono problemi specifici del tuo mercato di riferimento.</p>
+</div>
+</div>
+<div class="btn btn--outline border-none !p-0 !bg-transparent group-hover:text-primary transition-colors">
+                            Richiedi Demo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="section section--alt anim" id="esempi-concreti">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<h2 class="tracking-tight">Esempi <span class="gradient-text">concreti</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Ecco come le nostre automazioni trasformano il lavoro quotidiano.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Card 1: Gestione Lead -->
+<div class="custom-card overflow-hidden !p-0 anim anim-delay-1">
+<div class="p-8">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">group_add</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-on-surface">Gestione Lead CRM</h3>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Settore Immobiliare</p>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-error uppercase tracking-widest">Prima</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="text-error">•</span> Inserimento manuale</li>
+<li class="flex items-start gap-2"><span class="text-error">•</span> Ritardi di 24-48h</li>
 </ul>
 </div>
-<div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-md w-full">
-<div class="bg-surface-container-low p-lg rounded-2xl border border-outline-variant/20">
-<span class="material-symbols-outlined text-primary mb-sm">restaurant</span>
-<p class="font-label-md">Hospitality</p>
+<div class="flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
 </div>
-<div class="bg-surface-container-low p-lg rounded-2xl border border-outline-variant/20">
-<span class="material-symbols-outlined text-primary mb-sm">factory</span>
-<p class="font-label-md">Manifattura</p>
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-green-500 uppercase tracking-widest">Dopo</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Sincronizzazione istantanea</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Follow-up automatico</li>
+</ul>
 </div>
-<div class="bg-surface-container-low p-lg rounded-2xl border border-outline-variant/20">
-<span class="material-symbols-outlined text-primary mb-sm">apartment</span>
-<p class="font-label-md">Logistica</p>
+</div>
+</div>
+<div class="bg-primary/5 border-t border-outline-variant/30 p-4">
+<div class="text-center font-bold text-primary">Risultato: +300% velocità di risposta</div>
+</div>
+</div>
+<!-- Card 2: Fatturazione -->
+<div class="custom-card overflow-hidden !p-0 anim anim-delay-2">
+<div class="p-8">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-on-surface">Ciclo di Fatturazione</h3>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">E-commerce B2B</p>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-error uppercase tracking-widest">Prima</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="text-error">•</span> 15 ore/settimana</li>
+<li class="flex items-start gap-2"><span class="text-error">•</span> Errori di calcolo</li>
+</ul>
+</div>
+<div class="flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
+</div>
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-green-500 uppercase tracking-widest">Dopo</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Processo 100% autonomo</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Zero errori umani</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 border-t border-outline-variant/30 p-4">
+<div class="text-center font-bold text-primary">Risultato: Risparmio di 60 ore/mese</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Progetti Section -->
-<section class="py-3xl bg-surface-container-low" id="progetti">
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center mb-3xl">
-<span class="text-primary font-bold tracking-widest uppercase text-label-sm mb-md block">Portfolio</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Progetti che generano risultati</h2>
+<section class="section bg-white anim" id="progetti">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 w-fit px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">analytics</span>
+<span class="text-primary text-xs font-semibold uppercase tracking-wider">Case Study</span>
 </div>
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-xl">
-<!-- Project Card 1 -->
-<div class="bg-white rounded-2xl overflow-hidden shadow-md group border border-outline-variant/20" data-aos="fade-right">
-<div class="h-64 relative overflow-hidden">
-<img alt="A clean, professional photo of a modern office environment with digital screens displaying a logistics dashboard." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuw9spyuP0r4dgXbsIp0pYd68E3o_RIF4RpWvrXr4in5BWktnAApOU6kKNb5b3LK2jXMt0-PYJkzRafsOLcB303SzE-6ihndyofAkpveVbx7_POHwsVQ_iF7DxeOmQksOCZwtjXkn49_Q91TP_lAHfZjCxsSKv3wkJo98JK17xm0v2lI35vEo5qaq_zYmkuerv-popfAIWbEmJmloANbYXtgIJOUwuulUmtrIbyytA3RYl8JALlGk-zBHAprIBZlkRoQyK73Exzdo"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
-<span class="bg-primary text-white px-md py-1 rounded-full text-label-sm">Automazione Logistica</span>
+<h2 class="tracking-tight">Risultati <span class="gradient-text">misurabili</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Analisi dettagliata dell'impatto reale generato dalle nostre soluzioni su diverse realtà aziendali.</p>
 </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="custom-card anim anim-delay-1">
+<div class="h-1 w-12 bg-primary mb-6"></div>
+<div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">Logistica &amp; Supply Chain</div>
+<h3 class="text-xl font-bold text-on-surface mb-4">Ottimizzazione Magazzino</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Implementazione di un sistema di tracciamento AI per la gestione degli stock in tempo reale.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> -45% Costi operativi
+                        </li>
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> +30% Efficienza spedizioni
+                        </li>
+</ul>
 </div>
-<div class="p-xl">
-<div class="grid grid-cols-3 gap-lg mb-lg border-b border-outline-variant/30 pb-lg">
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Problema</p>
-<p class="font-label-sm">Gestione manuale ordini (10h/settimana)</p>
+<!-- Project 2 -->
+<div class="custom-card anim anim-delay-2">
+<div class="h-1 w-12 bg-[#06B6D4] mb-6"></div>
+<div class="text-[10px] font-bold text-[#06B6D4] uppercase tracking-widest mb-2">Fintech &amp; Banking</div>
+<h3 class="text-xl font-bold text-on-surface mb-4">Automazione KYC</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Digitalizzazione completa del processo di onboarding clienti con verifica documenti automatizzata.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> 90% Riduzione tempi attesa
+                        </li>
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> Zero errori di data-entry
+                        </li>
+</ul>
 </div>
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Soluzione</p>
-<p class="font-label-sm">Integrazione API e CRM custom</p>
-</div>
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Risultato</p>
-<p class="font-label-sm text-secondary">+95% Velocità evasione</p>
-</div>
-</div>
-<p class="font-body-md text-on-surface-variant">Abbiamo trasformato un collo di bottiglia operativo in un vantaggio competitivo, azzerando gli errori umani nella trascrizione dei dati.</p>
-</div>
-</div>
-<!-- Project Card 2 -->
-<div class="bg-white rounded-2xl overflow-hidden shadow-md group border border-outline-variant/20" data-aos="fade-left">
-<div class="h-64 relative overflow-hidden">
-<img alt="A minimalist architectural photograph of a high-tech kitchen or restaurant interior, focusing on the sleek design." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxvckxZTHOUCzkUPAep0zgCDGAN4egVq1F6KGgJTVLGKBUnA55_yGOhoXrDwiwJ8pyQ15o-WWKIzaRGDfgjD0KbhEbxx5FEV5iUXZm2DAM1R0_0zhRZBngZsBXWU0nFiciMrUTpfeYWGhrq9CkOTXClylqUxAisEN-gsJWxiuiiezNJOEbbY8MrNYuz48NCPdC9ApI4-TimGuAoNzQHcl9VkGUwNk7EMyOpuvIJkFbx_pbgLkHRQFxXTr4l6cLCPJeD3Szct2WD2c"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
-<span class="bg-secondary text-white px-md py-1 rounded-full text-label-sm">Web App Gestionale</span>
-</div>
-</div>
-<div class="p-xl">
-<div class="grid grid-cols-3 gap-lg mb-lg border-b border-outline-variant/30 pb-lg">
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Problema</p>
-<p class="font-label-sm">Overbooking e disorganizzazione turni</p>
-</div>
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Soluzione</p>
-<p class="font-label-sm">App Web PWA con AI scheduler</p>
-</div>
-<div>
-<p class="text-[10px] uppercase font-bold text-on-surface-variant mb-xs">Risultato</p>
-<p class="font-label-sm text-secondary">Zero Overbooking</p>
-</div>
-</div>
-<p class="font-body-md text-on-surface-variant">Un'applicazione intuitiva che ha permesso al cliente di gestire 4 punti vendita contemporaneamente da un unico dashboard centralizzato.</p>
+<!-- Project 3 -->
+<div class="custom-card anim anim-delay-3">
+<div class="h-1 w-12 bg-primary mb-6"></div>
+<div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">E-commerce &amp; Retail</div>
+<h3 class="text-xl font-bold text-on-surface mb-4">Customer Care AI</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Integrazione di agenti conversazionali intelligenti per il supporto clienti H24 multilingua.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> +120% Conversion rate
+                        </li>
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> -60% Ticket aperti
+                        </li>
+</ul>
 </div>
 </div>
 </div>
 </section>
-<!-- Contatti Section -->
-<section class="py-3xl" id="contatti">
-<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-3xl">
-<div data-aos="fade-right">
-<h2 class="font-display-lg text-display-lg text-on-surface mb-lg">Parliamo del tuo progetto.</h2>
-<p class="font-body-lg text-on-surface-variant mb-xl">
-                        Ogni grande innovazione inizia con una conversazione. La prima consulenza è gratuita e senza impegno: analizziamo i tuoi colli di bottiglia e disegniamo una roadmap di efficienza.
-                    </p>
-<div class="space-y-lg">
-<div class="flex items-center gap-md">
-<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">mail</span>
+<!-- Testimonials Section -->
+<section class="section section--alt anim" id="testimonials">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<h2 class="tracking-tight">Cosa dicono i <span class="gradient-text">nostri clienti</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">La fiducia delle aziende che hanno scelto di evolversi con noi.</p>
 </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="custom-card anim anim-delay-1">
+<div class="flex flex-col h-full gap-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="material-symbols-outlined text-primary/10 text-4xl leading-none">format_quote</span>
+</div>
+<p class="text-sm text-on-surface-variant flex-grow italic leading-relaxed">
+                            "TEKWORN ha trasformato completamente la gestione del nostro ristorante. Le automazioni ci fanno risparmiare ore ogni giorno."
+                        </p>
+<div class="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm">MF</div>
 <div>
-<p class="text-label-sm text-on-surface-variant uppercase">Email</p>
-<p class="font-label-md">info@tekworn.com</p>
+<div class="font-bold text-on-surface text-sm">Marco Ferretti</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">CEO, Ferretti Group</div>
 </div>
 </div>
-<div class="flex items-center gap-md">
-<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary">phone</span>
 </div>
+</div>
+<!-- Testimonial 2 -->
+<div class="custom-card anim anim-delay-2">
+<div class="flex flex-col h-full gap-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="material-symbols-outlined text-primary/10 text-4xl leading-none">format_quote</span>
+</div>
+<p class="text-sm text-on-surface-variant flex-grow italic leading-relaxed">
+                            "Professionalità incredibile. Il software gestionale su misura ha rivoluzionato il modo in cui gestiamo i clienti."
+                        </p>
+<div class="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm">GM</div>
 <div>
-<p class="text-label-sm text-on-surface-variant uppercase">Telefono</p>
-<p class="font-label-md">+39 0941 123456</p>
+<div class="font-bold text-on-surface text-sm">Giulia Mancini</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">Fondatrice, Studio GM</div>
 </div>
 </div>
-<div class="flex items-center gap-md">
-<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="custom-card anim anim-delay-3">
+<div class="flex flex-col h-full gap-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="material-symbols-outlined text-primary/10 text-4xl leading-none">format_quote</span>
+</div>
+<p class="text-sm text-on-surface-variant flex-grow italic leading-relaxed">
+                            "Il sistema di automazione ordini ha eliminato praticamente tutti gli errori manuali. Risultati eccezionali."
+                        </p>
+<div class="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm">AR</div>
+<div>
+<div class="font-bold text-on-surface text-sm">Andrea Russo</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">Direttore, Logistica Sud</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner Section -->
+<section class="section bg-white anim">
+<div class="container">
+<div class="anim relative overflow-hidden bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] rounded-3xl p-8 md:p-16 text-center cta-grid">
+<!-- Content -->
+<div class="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
+<div class="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 text-white text-xs font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> Inizia oggi
+                    </div>
+<h2 class="text-white leading-tight">Pronto a trasformare il tuo business?</h2>
+<p class="text-lg text-white/70">Scopri come le nostre automazioni possono far crescere la tua azienda. Prenota una consulenza gratuita.</p>
+<div class="flex flex-wrap justify-center gap-4 mt-4">
+<a class="btn bg-white text-primary py-4 px-8 text-base font-semibold !rounded-xl hover:bg-white/90" href="#contatti">
+                            Consulenza gratuita <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="btn border border-white/40 text-white py-4 px-8 text-base font-semibold !rounded-xl hover:bg-white/10" href="#servizi">Esplora i servizi</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sezione Contatti -->
+<section class="section section--alt anim" id="contatti">
+<div class="container">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-start">
+<!-- Left Column -->
+<div class="flex flex-col gap-stack-md anim">
+<div class="flex items-center gap-2 bg-primary/5 text-primary w-fit px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/10">
+<span class="material-symbols-outlined text-sm">mail</span> Contattaci
+                    </div>
+<h2 class="tracking-tight leading-tight">Inizia con una <span class="gradient-text">consulenza gratuita</span></h2>
+<p class="text-lg text-on-surface-variant max-w-lg">Raccontaci il tuo progetto e scopri come possiamo aiutarti ad automatizzare il tuo business. Nessun impegno, solo soluzioni concrete.</p>
+<div class="flex flex-col gap-6 mt-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-outline-variant/30 shadow-sm">
 <span class="material-symbols-outlined text-primary">location_on</span>
 </div>
-<div>
-<p class="text-label-sm text-on-surface-variant uppercase">Sede</p>
-<p class="font-label-md">Patti, Sicilia - Serviamo tutta Italia</p>
+<div class="text-base text-on-surface font-semibold">Patti (ME), Sicilia</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-outline-variant/30 shadow-sm">
+<span class="material-symbols-outlined text-primary">alternate_email</span>
+</div>
+<div class="text-base text-on-surface font-semibold underline decoration-primary/30">info@tekworn.it</div>
 </div>
 </div>
 </div>
+<!-- Right Column: Form -->
+<div class="anim anim-delay-2">
+<div class="custom-card shadow-sm">
+<form action="#" class="flex flex-col gap-5" method="POST">
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="nome">Nome e Cognome</label>
+<input class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest" id="nome" name="nome" placeholder="Inserisci il tuo nome" required="" type="text"/>
 </div>
-<div class="bg-white p-xl rounded-3xl border border-outline-variant shadow-lg" data-aos="fade-left">
-<form class="space-y-md">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
-<div>
-<label class="block font-label-md text-on-surface-variant mb-xs">Nome</label>
-<input class="w-full bg-surface p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Mario Rossi" type="text"/>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="email">Email</label>
+<input class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest" id="email" name="email" placeholder="latua@email.it" required="" type="email"/>
 </div>
-<div>
-<label class="block font-label-md text-on-surface-variant mb-xs">Azienda</label>
-<input class="w-full bg-surface p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Nome Impresa" type="text"/>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="messaggio">Messaggio</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest min-h-[120px]" id="messaggio" name="messaggio" placeholder="Come possiamo aiutarti?" required=""></textarea>
 </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
-<div>
-<label class="block font-label-md text-on-surface-variant mb-xs">Email</label>
-<input class="w-full bg-surface p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="mario@azienda.it" type="email"/>
-</div>
-<div>
-<label class="block font-label-md text-on-surface-variant mb-xs">Telefono</label>
-<input class="w-full bg-surface p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="+39 333 1234567" type="tel"/>
-</div>
-</div>
-<div>
-<label class="block font-label-md text-on-surface-variant mb-xs">Messaggio</label>
-<textarea class="w-full bg-surface p-md rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="Descrivi brevemente la tua necessità..." rows="4"></textarea>
-</div>
-<button class="w-full bg-primary text-on-primary font-label-md py-4 rounded-xl hover:bg-primary-container shadow-md transition-all" type="submit">
-                            Invia Richiesta
-                        </button>
+<button class="btn btn--primary py-4 px-8 text-base font-bold !rounded-xl w-full" type="submit">
+                                Richiedi consulenza gratuita <span class="material-symbols-outlined text-sm">send</span>
+</button>
 </form>
+</div>
 </div>
 </div>
 </div>
 </section>
 <!-- Footer -->
-<footer class="bg-surface-container-lowest border-t border-outline-variant py-2xl">
-<div class="max-w-max-width mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
-<div class="md:col-span-2">
-<p class="font-headline-md text-headline-md font-black text-on-surface mb-md">TEKWORN</p>
-<p class="font-body-md text-on-surface-variant max-w-sm mb-lg">
-                    Da Patti, Sicilia, serviamo tutta Italia con orgoglio. Aiutiamo le aziende a crescere attraverso software su misura e automazioni intelligenti.
-                </p>
-<div class="flex gap-md">
-<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">link</span>
-</a>
-<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:text-primary transition-colors" href="#">
-<span class="material-symbols-outlined">share</span>
-</a>
+<footer class="w-full bg-white border-t border-[#E2E8F0] pt-16 pb-8">
+<div class="container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+<!-- Column 1: Brand -->
+<div class="md:col-span-2 flex flex-col gap-6">
+<img alt="TEKWORN Logo" class="h-10 w-auto self-start" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeLFP68XF9w_LS6KhfpLG07b1FEhd2NifsIv__dRi1QkTpIZXi-YYTpePq5sNc79_Sez_Fa0kEAtLs_kASxC7QTrek07ZJXU_GuSWyKt5iTxaaTeEX7WBp_M7eYCZqD8L-XamAcCgHRKNVsKgkhVhggr3zNjD16m-Uj67zeTORspuD1Lv6BDD3pl6wjJSdi4jz7uKATIXHtyGSi7SLCie3Y2ZJVNxCqjCC9CNtZjqF_GpyOj6UEL-rQzh32i4vLSphmDvrnfObzcrX"/>
+<p class="text-sm text-[#64748B] max-w-sm leading-relaxed">Partner tecnologico per automazioni aziendali, sviluppo software e soluzioni digitali su misura.</p>
+<div class="flex items-center gap-2 text-sm text-[#64748B]">
+<span class="material-symbols-outlined text-[#06B6D4] text-lg">location_on</span>
+<span class="">Da Patti, Sicilia → Tutta Italia</span>
 </div>
 </div>
-<div>
-<h4 class="font-label-md text-on-surface mb-lg">Navigazione</h4>
-<ul class="space-y-md">
-<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#chi-siamo">Chi siamo</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#servizi">Servizi</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#progetti">Progetti</a></li>
+<!-- Column 2: Navigation -->
+<div class="flex flex-col gap-6">
+<h4 class="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">Navigazione</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#home">Home</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#chi-siamo">Chi siamo</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#servizi">Servizi</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#progetti">Progetti</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#contatti">Contatti</a>
+</nav>
+</div>
+<!-- Column 3: Services -->
+<div class="flex flex-col gap-6">
+<h4 class="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">Servizi</h4>
+<ul class="flex flex-col gap-3">
+<li class="text-sm text-[#64748B]">Automazioni Aziendali</li>
+<li class="text-sm text-[#64748B]">Siti Web Professionali</li>
+<li class="text-sm text-[#64748B]">Web App Personalizzate</li>
+<li class="text-sm text-[#64748B]">Software Gestionali</li>
 </ul>
 </div>
-<div>
-<h4 class="font-label-md text-on-surface mb-lg">Legale</h4>
-<ul class="space-y-md">
-<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">LinkedIn</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Termini e Condizioni</a></li>
-</ul>
 </div>
+<!-- Bottom Bar -->
+<div class="pt-8 border-t border-[#E2E8F0] flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-xs text-[#94A3B8]">© 2024 TEKWORN. Tutti i diritti riservati.</div>
+<div class="text-xs text-[#94A3B8] font-medium">Automazioni · Sviluppo Software · Innovazione Digitale</div>
 </div>
-<div class="max-w-max-width mx-auto px-margin-desktop mt-2xl pt-xl border-t border-outline-variant/30 text-center">
-<p class="font-body-md text-body-md text-on-surface-variant">
-                © 2024 TEKWORN. Da Patti, Sicilia, serviamo tutta Italia con orgoglio.
-            </p>
 </div>
 </footer>
 <script>
-    // Initialize AOS
-    AOS.init({
-        duration: 500,
-        once: true,
-        offset: 120
-    });
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.getElementById('main-nav');
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-    // Anagram Animation Logic
-    const container = document.getElementById('anagram-box');
-    const btn = document.getElementById('rearrange-btn');
-    const btnText = document.getElementById('btn-text');
-    
-    const size = 70; // block size
-    const margin = 12;
-    let isTekworn = false;
-
-    /**
-     * Initial NETWORK (3-3-1):
-     * [0]N [1]E [2]T
-     * [3]W [4]O [5]R
-     *      [7]K     (Middle of 3rd row)
-     * 
-     * Target TEKWORN (3-3-1):
-     * [0]T [1]E [2]K
-     * [3]W [4]O [5]R
-     *      [7]N     (Middle of 3rd row)
-     */
-    
-    const letters = [
-        { char: 'N', initialSlot: 0, finalSlot: 7, color: '#e6e8ea', text: '#191c1e' }, // N
-        { char: 'E', initialSlot: 1, finalSlot: 1, color: '#e6e8ea', text: '#191c1e' }, // E (Static)
-        { char: 'T', initialSlot: 2, finalSlot: 0, color: '#e6e8ea', text: '#191c1e' }, // T
-        { char: 'W', initialSlot: 3, finalSlot: 3, color: '#2563eb', text: '#ffffff' }, // W (Static)
-        { char: 'O', initialSlot: 4, finalSlot: 4, color: '#2563eb', text: '#ffffff' }, // O (Static)
-        { char: 'R', initialSlot: 5, finalSlot: 5, color: '#2563eb', text: '#ffffff' }, // R (Static)
-        { char: 'K', initialSlot: 7, finalSlot: 2, color: '#b4c5ff', text: '#00174b' }  // K
-    ];
-
-    const letterElements = [];
-
-    function initAnagram() {
-        letters.forEach((data, i) => {
-            const el = document.createElement('div');
-            el.className = 'letter-block';
-            el.style.width = `${size}px`;
-            el.style.height = `${size}px`;
-            el.textContent = data.char;
-            el.style.backgroundColor = data.color;
-            el.style.color = data.text;
-            container.appendChild(el);
-            letterElements.push(el);
-        });
-        updatePositions();
-    }
-
-    function updatePositions() {
-        const gridWidth = 3 * size + 2 * margin;
-        const offsetX = (360 - gridWidth) / 2;
-        const offsetY = (360 - gridWidth) / 2;
-
-        letterElements.forEach((el, i) => {
-            const data = letters[i];
-            const slot = isTekworn ? data.finalSlot : data.initialSlot;
-            
-            const row = Math.floor(slot / 3);
-            const col = slot % 3;
-            
-            const x = offsetX + col * (size + margin);
-            const y = offsetY + row * (size + margin);
-            
-            el.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    }
-
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        isTekworn = !isTekworn;
-        updatePositions();
-        btnText.textContent = isTekworn ? "Torna a NETWORK" : "Trasforma in TEKWORN";
-    });
-
-    initAnagram();
-
-    // Navigation active state logic
-    window.addEventListener('scroll', () => {
-        const sections = ['hero', 'chi-siamo', 'servizi', 'progetti', 'contatti'];
-        let current = 'hero';
-
-        sections.forEach(section => {
-            const element = document.getElementById(section);
-            if (element) {
-                const rect = element.getBoundingClientRect();
-                if (rect.top <= 150) {
-                    current = section;
+            // Nav background on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    nav.classList.add('bg-white/80', 'border-b', 'border-[#E2E8F0]', 'shadow-sm');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                    nav.classList.remove('bg-white/80', 'border-b', 'border-[#E2E8F0]', 'shadow-sm');
+                    nav.classList.add('bg-transparent');
                 }
-            }
+            });
+
+            // Mobile menu toggle
+            const toggleMenu = () => {
+                const isOpen = !mobileMenu.classList.contains('closed');
+                if (isOpen) {
+                    mobileMenu.classList.add('closed');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileMenu.classList.remove('closed');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
+
+            menuToggle.addEventListener('click', toggleMenu);
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('closed');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Scroll Animation Observer
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, { rootMargin: '-100px' });
+
+            document.querySelectorAll('.anim').forEach(el => observer.observe(el));
         });
 
-        document.querySelectorAll('nav div a').forEach(link => {
-            link.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-primary');
-            link.classList.add('text-on-surface-variant');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('text-primary', 'font-bold', 'border-b-2', 'border-primary');
-                link.classList.remove('text-on-surface-variant');
+        // Hero parallax/float effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const amount = 20;
+            const x = (e.clientX / window.innerWidth - 0.5) * amount;
+            const y = (e.clientY / window.innerHeight - 0.5) * amount;
+            const dashboard = document.querySelector('.floating');
+            if(dashboard) {
+                dashboard.style.transform = `translate(${x}px, ${y}px)`;
             }
         });
-    });
-</script>
+    </script>
 </body></html>
