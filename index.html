@@ -811,7 +811,7 @@
 </div>
 </div>
 <!-- Right Column: Form -->
-<div class="anim anim-delay-2">
+<!-- <div class="anim anim-delay-2">
 <div class="custom-card shadow-sm">
 <form action="#" class="flex flex-col gap-5" method="POST">
 <div class="flex flex-col gap-2">
@@ -834,7 +834,66 @@
 </div>
 </div>
 </div>
-</section>
+</section> -->
+<!-- Right Column: Form -->
+<div class="anim anim-delay-2">
+  <div class="custom-card shadow-sm">
+
+    <form id="contactForm" class="flex flex-col gap-5">
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="nome">
+          Nome e Cognome
+        </label>
+        <input
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+          id="nome"
+          name="nome"
+          type="text"
+          placeholder="Inserisci il tuo nome"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="email">
+          Email
+        </label>
+        <input
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+          id="email"
+          name="email"
+          type="email"
+          placeholder="latua@email.it"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="messaggio">
+          Messaggio
+        </label>
+        <textarea
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest min-h-[120px]"
+          id="messaggio"
+          name="messaggio"
+          placeholder="Come possiamo aiutarti?"
+          required
+        ></textarea>
+      </div>
+
+      <button
+        class="btn btn--primary py-4 px-8 text-base font-bold !rounded-xl w-full"
+        type="submit"
+      >
+        Richiedi consulenza gratuita
+        <span class="material-symbols-outlined text-sm">send</span>
+      </button>
+
+    </form>
+
+  </div>
+</div>
 <!-- Footer -->
 <footer class="w-full bg-white border-t border-[#E2E8F0] pt-16 pb-8">
 <div class="container">
@@ -947,5 +1006,50 @@
                 dashboard.style.transform = `translate(${x}px, ${y}px)`;
             }
         });
+    </script>
+    <script>
+    document
+    .getElementById("contactForm")
+    .addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const payload = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        messaggio: document.getElementById("messaggio").value
+        };
+
+        try {
+
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert("Messaggio inviato!");
+
+            e.target.reset();
+
+        } else {
+
+            alert("Errore nell'invio.");
+
+        }
+
+        } catch (error) {
+
+        alert("Errore di connessione.");
+
+        }
+
+    });
     </script>
 </body></html>
