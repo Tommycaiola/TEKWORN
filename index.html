@@ -335,6 +335,10 @@
             <span style="width: 4px; height: 4px; background: #94A3B8; border-radius: 50%; display: inline-block; animation: pulse 1.5s 0.4s infinite;"></span>
         </div>
     </div>
+    <!-- Logo screen mostrato dopo lo scanner -->
+    <div id="preload-logo-screen" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.6s ease;pointer-events:none;z-index:10;background:#fff;">
+        <img src="/img/transparent_logo_copia.png" alt="TEKWORN" style="height:clamp(3rem,10vw,5rem);width:auto;">
+    </div>
 </div>
 <!-- Top Navigation Bar -->
 <nav class="fixed w-full top-0 z-[100] transition-all duration-300 backdrop-blur-xl bg-transparent" id="main-nav">
@@ -1214,7 +1218,7 @@
             label.style.transform = 'translateY(0)';
         }, 100);
 
-        var state = { phase: 'idle', startTime: null, scanProgress: -10, transformed: Array(TOTAL_CHARS).fill(false) };
+        var state = { phase: 'idle', startTime: null, scanProgress: -10, transformed: Array(TOTAL_CHARS).fill(false), logoShown: false };
 
         setTimeout(function() {
             state.phase = 'scanning';
@@ -1264,12 +1268,30 @@
             if (state.phase === 'hold') {
                 scanner.style.opacity = '0';
                 statusTxt.textContent = 'System Ready';
-                if (ts - state.startTime > 1000) {
-                    overlay.classList.add('preload-fade-out');
-                    sessionStorage.setItem('tekworn_preloaded', '1');
-                    setTimeout(function() { overlay.style.display = 'none'; }, 800);
+                if (ts - state.startTime > 800 && !state.logoShown) {
+                    state.logoShown = true;
+                    // Mostra lo schermo logo
+                    var logoScreen = document.getElementById('preload-logo-screen');
+                    var label = document.getElementById('preload-label');
+                    var lettersWrap = document.getElementById('preload-letters');
+                    var statusEl = document.getElementById('preload-status-text');
+                    [label, lettersWrap, statusEl].forEach(function(el) {
+                        if (el) { el.style.transition = 'opacity 0.3s ease'; el.style.opacity = '0'; }
+                    });
+                    if (logoScreen) {
+                        setTimeout(function() {
+                            logoScreen.style.opacity = '1';
+                            logoScreen.style.pointerEvents = 'auto';
+                            setTimeout(function() {
+                                overlay.classList.add('preload-fade-out');
+                                sessionStorage.setItem('tekworn_preloaded', '1');
+                                setTimeout(function() { overlay.style.display = 'none'; }, 800);
+                            }, 1200);
+                        }, 300);
+                    }
                     return;
                 }
+                if (state.logoShown) return;
             }
 
             requestAnimationFrame(tick);
