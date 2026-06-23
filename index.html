@@ -8,6 +8,8 @@
         <meta content="TEKWORN - Automatizziamo il lavoro. Acceleriamo la crescita." name="description"/>
         <!-- Tailwind CSS v3 -->
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <!-- Material Symbols -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
         <!-- Google Fonts: Inter -->
         <link href="https://fonts.googleapis.com" rel="preconnect"/>
         <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -376,6 +378,14 @@
         
         <!-- BEGIN: Services -->
         <section class="py-24 bg-slate-100 relative overflow-hidden isolate" id="services">
+            <!-- BACKGROUND IMAGE -->
+            <div class="absolute inset-0 -z-10">
+                <img
+                src="https://i.pinimg.com/1200x/62/c2/6b/62c26bcd4651802cd51cf0c7bf433734.jpg"
+                class="w-full h-full object-cover opacity-50"
+                alt=""
+                />
+            </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -514,115 +524,198 @@
 
         </section>
         <!-- END: Services -->
-        
+
         <!-- BEGIN: Concrete Examples -->
-        <section class="py-24 bg-slate-50 border-y border-slate-200">
+        <section class="py-24 bg-brand-dark border-y border-slate-200 relative overflow-hidden isolate">
+            <div class="absolute inset-0 opacity-10 pointer-events-none"
+                style="background-image: linear-gradient(#004ac6 1px, transparent 1px),
+                        linear-gradient(90deg, #004ac6 1px, transparent 1px);
+                        background-size: 50px 50px;">
+            </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <h2 class="text-3xl font-extrabold text-center mb-16 anim">
-                    Trasformazioni Concrete
+                <h2 class="text-3xl font-extrabold text-center mb-16 anim gradient-text">
+                Trasformazioni Concrete
                 </h2>
 
                 <div class="grid md:grid-cols-2 gap-12 anim delay-100">
 
-                    <div class="space-y-6">
+                <!-- LEFT COLUMN -->
+                <div class="space-y-6">
 
-                        <!-- Example 1 -->
-                        <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative anim">
+                    <!-- CARD 1 - LIGHT -->
+                    <div class="custom-card overflow-hidden !p-0 anim bg-white/5 rounded-3xl">
 
-                            <h4 class="text-lg font-bold mb-4">
-                                Gestione Lead CRM
-                            </h4>
+                    <div class="p-8">
 
-                            <div class="space-y-4">
-
-                                <div class="flex items-start gap-3">
-                                    <span class="text-red-500 font-bold">Prima:</span>
-                                    <span class="text-slate-600 italic">
-                                        Inserimento manuale dei dati dai form, ritardi di risposta di 24h.
-                                    </span>
-                                </div>
-
-                                <div class="flex items-start gap-3">
-                                    <span class="text-green-600 font-bold">Dopo:</span>
-                                    <span class="text-slate-700">
-                                        Sincronizzazione istantanea, alert su Slack e auto-risposta via email.
-                                    </span>
-                                </div>
-
-                                <div class="pt-4 border-t border-slate-100">
-                                    <span class="text-brand-primary font-black uppercase text-xs">
-                                        Risultato: +40% conversioni
-                                    </span>
-                                </div>
-
-                            </div>
-
+                        <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white">group_add</span>
                         </div>
 
-                        <!-- Example 2 -->
-                        <div class="p-8 rounded-3xl bg-brand-dark text-white shadow-2xl relative anim delay-100">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">
+                            Gestione Lead CRM
+                            </h3>
+                            <p class="text-[10px] font-bold text-white/60 uppercase tracking-wider">
+                            Automazione Vendite
+                            </p>
+                        </div>
+                        </div>
 
-                            <h4 class="text-lg font-bold mb-4">
-                                Ciclo di Fatturazione
-                            </h4>
+                        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-6">
 
-                            <div class="space-y-4">
+                        <!-- Prima -->
+                        <div class="space-y-3">
+                            <div class="text-[10px] font-bold text-red-400 uppercase tracking-widest">Prima</div>
+                            <ul class="text-sm text-white/60 space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-400">•</span>
+                                Inserimento manuale dei dati dai form
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-400">•</span>
+                                Ritardi di risposta di 24h
+                            </li>
+                            </ul>
+                        </div>
 
-                                <div class="flex items-start gap-3">
-                                    <span class="text-red-400 font-bold">Prima:</span>
-                                    <span class="text-slate-400 italic">
-                                        Controllo manuale dei pagamenti e invio solleciti via mail ogni settimana.
-                                    </span>
-                                </div>
+                        <!-- Arrow -->
+                        <div class="flex items-center justify-center">
+                            <span class="material-symbols-outlined text-outline-variant text-white/30">
+                            arrow_forward
+                            </span>
+                        </div>
 
-                                <div class="flex items-start gap-3">
-                                    <span class="text-brand-accent font-bold">Dopo:</span>
-                                    <span class="text-slate-200">
-                                        Sistema automatizzato che rileva il pagamento e gestisce i solleciti in autonomia.
-                                    </span>
-                                </div>
-
-                                <div class="pt-4 border-t border-white/10">
-                                    <span class="text-brand-accent font-black uppercase text-xs">
-                                        Risultato: -15h di lavoro/mese
-                                    </span>
-                                </div>
-
-                            </div>
+                        <!-- Dopo -->
+                        <div class="space-y-3">
+                            <div class="text-[10px] font-bold text-green-500 uppercase tracking-widest">Dopo</div>
+                            <ul class="text-sm text-white/80 space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-green-500 text-xs">check_circle</span>
+                                Sincronizzazione istantanea
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-green-500 text-xs">check_circle</span>
+                                Alert su Slack e auto-risposta via email
+                            </li>
+                            </ul>
+                        </div>
 
                         </div>
 
                     </div>
 
-                    <div class="flex items-center justify-center anim delay-200">
+                    <div class="bg-primary/5 border-t border-outline-variant/30 p-4">
+                        <div class="text-center font-bold text-green-500">
+                        Risultato: +40% conversioni
+                        </div>
+                    </div>
 
-                        <div class="relative w-full max-w-md aspect-square bg-white rounded-3xl shadow-xl overflow-hidden p-2">
+                    </div>
 
-                            <div class="w-full h-full border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-center bg-grid-pattern">
+                    <!-- CARD 2 - DARK -->
+                    <div class="custom-card overflow-hidden !p-0 anim delay-100 bg-white/5 text-white rounded-3xl">
 
-                                <div class="text-center p-8">
+                    <div class="p-8">
 
-                                    <div class="text-6xl font-black text-brand-primary mb-2">
-                                        -94%
-                                    </div>
+                        <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white">receipt_long</span>
+                        </div>
 
-                                    <p class="font-bold text-slate-800">
-                                        Tempo di Deployment Ridotto
-                                    </p>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">
+                            Ciclo di Fatturazione
+                            </h3>
+                            <p class="text-[10px] font-bold text-white/60 uppercase tracking-wider">
+                            Automazione Amministrativa
+                            </p>
+                        </div>
+                        </div>
 
-                                    <p class="text-sm text-slate-500 mt-2">
-                                        Basato su audit aziendale media impresa, 2023.
-                                    </p>
+                        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-6">
 
-                                </div>
+                        <!-- Prima -->
+                        <div class="space-y-3">
+                            <div class="text-[10px] font-bold text-red-400 uppercase tracking-widest">Prima</div>
+                            <ul class="text-sm text-white/60 space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-400">•</span>
+                                Controllo manuale dei pagamenti
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-400">•</span>
+                                Invio solleciti via mail settimanali
+                            </li>
+                            </ul>
+                        </div>
 
-                            </div>
+                        <!-- Arrow -->
+                        <div class="flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white/30">
+                            arrow_forward
+                            </span>
+                        </div>
+
+                        <!-- Dopo -->
+                        <div class="space-y-3">
+                            <div class="text-[10px] font-bold text-green-400 uppercase tracking-widest">Dopo</div>
+                            <ul class="text-sm text-white/80 space-y-2">
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-green-400 text-xs">check_circle</span>
+                                Sistema automatizzato pagamenti
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-green-400 text-xs">check_circle</span>
+                                Gestione solleciti autonoma
+                            </li>
+                            </ul>
+                        </div>
 
                         </div>
 
                     </div>
+
+                    <div class="bg-white/5 border-t border-white/10 p-4">
+                        <div class="text-center font-bold text-green-400">
+                        Risultato: -15h di lavoro/mese
+                        </div>
+                    </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN (KPI) -->
+                <div class="flex items-center justify-center anim delay-200">
+
+                    <div class="relative w-full max-w-md aspect-square bg-white/5 rounded-3xl shadow-xl overflow-hidden p-2">
+
+                    <div class="w-full h-full border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-center bg-grid-pattern">
+
+                        <div class="text-center p-8">
+
+                        <div class="text-6xl font-black gradient-text mb-2">
+                            -94%
+                        </div>
+
+                        <p class="font-bold text-green-500">
+                            Tempo di Deployment Ridotto
+                        </p>
+
+                        <p class="text-sm text-slate-500 mt-2">
+                            Automatizza anche tu i tuoi processi aziendali
+                        </p>
+
+                        </div>
+
+                    </div>
+
+                    </div>
+
+                </div>
 
                 </div>
 
@@ -633,7 +726,12 @@
 
 
         <!-- BEGIN: Measurable Results -->
-        <section class="py-24 bg-brand-dark" id="results">
+        <section class="py-24 bg-brand-dark relative overflow-hidden isolate" id="results">
+            <div class="absolute inset-0 opacity-10 pointer-events-none"
+                style="background-image: linear-gradient(#004ac6 1px, transparent 1px),
+                        linear-gradient(90deg, #004ac6 1px, transparent 1px);
+                        background-size: 50px 50px;">
+            </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -912,6 +1010,14 @@
 
         <!-- BEGIN: Contact Section -->
         <section class="py-24 bg-white relative overflow-hidden isolate" id="contact">
+            <!-- BACKGROUND IMAGE -->
+            <div class="absolute inset-0 -z-10">
+                <img
+                src="https://i.pinimg.com/1200x/78/6d/8d/786d8d4a377dca5979cf4859e0c1ce73.jpg"
+                class="w-full h-full object-cover opacity-10"
+                alt=""
+                />
+            </div>
             
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 anim">
 
