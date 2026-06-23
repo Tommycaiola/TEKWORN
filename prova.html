@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TEKWORN | Automazioni e Sistemi Digitali</title>
+<meta content="TEKWORN - Automatizziamo il lavoro. Acceleriamo la crescita." name="description"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+              },
+              colors: {
+                brand: {
+                  light: '#f3f3fe',
+                  primary: '#004ac6', 
+                  accent: '#06b6d4', 
+                  dark: '#191b23',
+                  surface: '#faf8ff',
+                }
+              },
+              borderRadius: {
+                'custom': '8px',
+              }
+            }
+          }
+        }
+    </script>
+<style data-purpose="custom-layout">
+        .bg-grid-pattern {
+          background-image: radial-gradient(circle, #004ac610 1px, transparent 1px);
+          background-size: 30px 30px;
+        }
+
+        .cta-grid {
+          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+          background-size: 30px 30px;
+        }
+        
+        .glass-card {
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+
+        .anim {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .anim.active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        .gradient-text {
+          background: linear-gradient(135deg, #004ac6 0%, #06b6d4 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes textPulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+        .anagram-swap {
+          animation: textPulse 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-brand-surface font-sans text-brand-dark overflow-x-hidden">
+<!-- BEGIN: Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center">
+<img alt="TEKWORN Logo" class="h-10 w-auto" data-purpose="brand-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbeOFMUXrl1iVds1v7iTVfzP_s_p5CwNzk-kntFKJHX2191kVaH1yEM1Jhmn628bFdJyGz8W-_37syTfldDmFonQpSUICnZQ1Y2G-cH1OVnoHUDygXHNleoIlfQSFMDgV_JW0zmPiWMAYhh69nWkPIOvek0NXT4mAQxYK4E9aJczTItfKiDNEVomHxjv0TXQmohCQPjDUhzsWBVQlM9jf9mUsYWdX_52IG5DAdM7gw3GcMMrx0w1ugyxjbZ1WDWoSdHszUcmnl5w8l"/>
+</div>
+<div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+<a class="hover:text-brand-primary transition-colors" href="#about">CHI SIAMO</a>
+<a class="hover:text-brand-primary transition-colors" href="#services">SERVIZI</a>
+<a class="hover:text-brand-primary transition-colors" href="#results">RISULTATI</a>
+<a class="px-5 py-2.5 bg-brand-primary text-white rounded-custom hover:bg-brand-dark transition-all shadow-lg shadow-blue-500/20" href="#contact">INIZIAMO</a>
+</div>
+<div class="md:hidden">
+<button class="text-brand-dark p-2">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16m7 6H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- END: Navigation -->
+<main class="relative">
+<!-- BEGIN: Hero Section -->
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+  <!--Video bg-->
+  <div class="absolute inset-0 -z-20">
+        <video
+            class="w-full h-full object-cover"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            fetchpriority="high"
+        >
+            <source src="/img/herobg.mp4" type="video/mp4">
+        </video>
+    </div>
+  
+<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+<script>
+            class ThreeJSScene extends HTMLElement {
+                connectedCallback() {
+                    const container = this;
+                    const src = this.getAttribute('src');
+                    if (src) {
+                        const scriptContent = src;
+                        const initScene = new Function('container', scriptContent);
+                        initScene(container);
+                    }
+                }
+            }
+            customElements.define('threejs-scene', ThreeJSScene);
+        </script>
+<!-- Background Animation Placeholder Integration -->
+<div class="absolute inset-0 -z-10 opacity-30">
+            {{DATA:ANIMATION:ANIMATION_28}}
+        </div>
+<div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="anim">
+<div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-primary bg-brand-primary/10 rounded-full border border-brand-primary/20">
+                        AUTOMAZIONE SISTEMI 2.0
+                    </div>
+<h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
+<span class="gradient-text">Automatizziamo il lavoro.</span><br/> Acceleriamo la crescita.
+                    </h1>
+<p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
+                        TEKWORN aiuta aziende e professionisti a eliminare attività ripetitive con automazioni, software e sistemi digitali su misura. Progettiamo il futuro del tuo workflow.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="px-8 py-4 bg-brand-primary text-white text-center font-bold rounded-custom hover:shadow-2xl hover:scale-[1.02] transition-all" href="#contact">Inizia Ora</a>
+<a class="px-8 py-4 bg-white text-brand-dark text-center font-bold rounded-custom border border-slate-200 hover:bg-slate-50 transition-all" href="#about">La Nostra Visione</a>
+</div>
+<div class="mt-10 flex items-center gap-8">
+<div>
+<p class="text-2xl font-black text-brand-dark">50+</p>
+<p class="text-xs font-bold text-slate-400 uppercase">Progetti</p>
+</div>
+<div class="w-px h-8 bg-slate-200"></div>
+<div>
+<p class="text-2xl font-black text-brand-dark">98%</p>
+<p class="text-xs font-bold text-slate-400 uppercase">Soddisfazione</p>
+</div>
+</div>
+</div>
+<div class="relative anim delay-200">
+<div class="relative z-20 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+<img alt="Technical Dashboard Preview" class="w-full h-auto" data-purpose="hero-dashboard-preview" src="https://lh3.googleusercontent.com/aida/AP1WRLsUJnYXoFUbcWCyGffnLkV1JMGjBM2Aj2ArTysTbjH9nff7itSUQ1qK8dJuzCuiQXq_6pF7nZ2q8TwDrbQcrCJOimpBzCJvirXjAUluQFqNQG4KpLqd-1kx1Z7bho2CKndH0SDorUCwTGAJ79bbJzXmqNc_xOI98o5vP61zYyX4q5zqOBghEUhy1Xgm4uwWnb2f9OCK4yqrfVY0e7AuCDpN-NDVZ1s00kv1OuG8z1E863OessR6HJU28bvJ"/>
+</div>
+<div class="absolute -top-6 -right-6 w-full h-full border-2 border-brand-primary/20 rounded-2xl -z-10"></div>
+<div class="absolute -bottom-8 -left-8 glass-card p-6 rounded-custom hidden xl:block shadow-xl">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-600">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div>
+<p class="text-xs font-bold text-slate-500">STATO SISTEMA</p>
+<p class="font-bold text-slate-800">100% Operativo</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: About Section -->
+<section class="py-24 bg-brand-dark text-white relative overflow-hidden" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<div class="anim">
+<h2 class="text-sm font-bold tracking-[0.3em] text-brand-accent mb-12 uppercase">L'ORIGINE</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+<div class="text-center">
+<span class="block text-4xl md:text-6xl font-light text-slate-400 mb-2">DA</span>
+<span class="block text-6xl md:text-8xl font-black tracking-tighter">NETWORK</span>
+</div>
+<div class="flex items-center justify-center">
+<svg class="w-12 h-12 text-brand-accent animate-pulse" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="text-center">
+<span class="block text-4xl md:text-6xl font-light text-slate-400 mb-2">A</span>
+<span class="block text-6xl md:text-8xl font-black tracking-tighter gradient-text">TEKWORN</span>
+</div>
+</div>
+<h3 class="mt-16 text-3xl font-extrabold">Da NETWORK a TEKWORN</h3>
+<p class="mt-6 text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                    Come riorganizziamo le lettere per formare il nostro nome, così riorganizziamo i processi aziendali per creare efficienza. Abbiamo preso l'integrità strutturale di una <span class="text-white italic">Network</span> e l'abbiamo combinata con l'<span class="text-white italic">Automazione Tecnica</span> per creare TEKWORN.
+                </p>
+<div class="mt-12 p-8 bg-white/5 border border-white/10 rounded-3xl max-w-2xl mx-auto text-left">
+<h4 class="text-brand-accent font-bold mb-2">La nostra Visione</h4>
+<p class="text-slate-300">Non vendiamo solo software; vendiamo tempo. Crediamo che ogni minuto risparmiato su un'attività ripetitiva sia un minuto investito nella creatività e nella crescita strategica del tuo business.</p>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(#004ac6 1px, transparent 1px), linear-gradient(90deg, #004ac6 1px, transparent 1px); background-size: 50px 50px;"></div>
+</section>
+<!-- END: About Section -->
+<!-- BEGIN: Services -->
+<section class="py-24 bg-white" id="services">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-20 anim">
+<h2 class="text-4xl font-extrabold mb-4">Soluzioni Sofisticate</h2>
+<p class="text-slate-600 max-w-2xl mx-auto">Semplifichiamo la complessità attraverso flussi di automazione intelligenti e piattaforme digitali moderne.</p>
+</div>
+<div class="grid md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px] anim delay-100">
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl bg-slate-100 p-10 flex flex-col justify-end transition-all hover:shadow-2xl anim">
+<div class="absolute top-0 right-0 p-8">
+<div class="w-16 h-16 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+</div>
+<h3 class="text-3xl font-bold mb-4">Automazioni Aziendali</h3>
+<p class="text-slate-600 max-w-md">Elimina i colli di bottiglia operativi. Colleghiamo i tuoi strumenti (CRM, Mail, Fogli di calcolo) per farli lavorare al posto tuo, riducendo errori e costi.</p>
+<div class="mt-6 flex gap-4">
+<span class="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200">Zapier / Make</span>
+<span class="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200">AI Agents</span>
+<span class="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200">Workflows</span>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-3xl bg-brand-primary p-8 text-white transition-all hover:bg-brand-dark anim delay-200">
+<h3 class="text-xl font-bold mb-2">Siti Web Professionali</h3>
+<p class="text-blue-100 text-sm">Realizziamo vetrine digitali ad alte prestazioni, ottimizzate per la conversione e il posizionamento sui motori di ricerca.</p>
+<div class="absolute bottom-4 right-4 opacity-20">
+<svg class="w-24 h-24" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-3xl bg-brand-accent p-8 text-white transition-all hover:bg-brand-dark anim delay-300">
+<h3 class="text-xl font-bold mb-2">Web App Personalizzate</h3>
+<p class="text-cyan-50 text-sm">Sviluppiamo software su misura accessibili da browser, pronti a scalare con le tue necessità aziendali.</p>
+<div class="absolute bottom-4 right-4 opacity-20">
+<svg class="w-24 h-24" fill="currentColor" viewbox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Services -->
+<!-- BEGIN: Concrete Examples -->
+<section class="py-24 bg-slate-50 border-y border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-extrabold text-center mb-16 anim">Trasformazioni Concrete</h2>
+<div class="grid md:grid-cols-2 gap-12 anim delay-100">
+<div class="space-y-6">
+<!-- Example 1 -->
+<div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative anim">
+<h4 class="text-lg font-bold mb-4">Gestione Lead CRM</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="text-red-500 font-bold">Prima:</span>
+<span class="text-slate-600 italic">Inserimento manuale dei dati dai form, ritardi di risposta di 24h.</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="text-green-600 font-bold">Dopo:</span>
+<span class="text-slate-700">Sincronizzazione istantanea, alert su Slack e auto-risposta via email.</span>
+</div>
+<div class="pt-4 border-t border-slate-100">
+<span class="text-brand-primary font-black uppercase text-xs">Risultato: +40% conversioni</span>
+</div>
+</div>
+</div>
+<!-- Example 2 -->
+<div class="p-8 rounded-3xl bg-brand-dark text-white shadow-2xl relative anim delay-100">
+<h4 class="text-lg font-bold mb-4">Ciclo di Fatturazione</h4>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="text-red-400 font-bold">Prima:</span>
+<span class="text-slate-400 italic">Controllo manuale dei pagamenti e invio solleciti via mail ogni settimana.</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="text-brand-accent font-bold">Dopo:</span>
+<span class="text-slate-200">Sistema automatizzato che rileva il pagamento e gestisce i solleciti in autonomia.</span>
+</div>
+<div class="pt-4 border-t border-white/10">
+<span class="text-brand-accent font-black uppercase text-xs">Risultato: -15h di lavoro/mese</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center anim delay-200">
+<div class="relative w-full max-w-md aspect-square bg-white rounded-3xl shadow-xl overflow-hidden p-2">
+<div class="w-full h-full border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-center bg-grid-pattern">
+<div class="text-center p-8">
+<div class="text-6xl font-black text-brand-primary mb-2">-94%</div>
+<p class="font-bold text-slate-800">Tempo di Deployment Ridotto</p>
+<p class="text-sm text-slate-500 mt-2">Basato su audit aziendale media impresa, 2023.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Concrete Examples -->
+<!-- BEGIN: Measurable Results -->
+<section class="py-24 bg-white" id="results">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-extrabold text-center mb-16 anim">Risultati Misurabili</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="anim text-center p-8 bg-slate-50 rounded-3xl">
+<div class="text-brand-primary mb-4">
+<svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="text-xl font-bold mb-2">Ottimizzazione Magazzino</div>
+<p class="text-slate-500 text-sm">Riduzione degli sprechi del 25% tramite sistemi di tracciamento automatizzati.</p>
+</div>
+<div class="anim delay-100 text-center p-8 bg-slate-50 rounded-3xl">
+<div class="text-brand-primary mb-4">
+<svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="text-xl font-bold mb-2">Gestione Clienti Automatizzata</div>
+<p class="text-slate-500 text-sm">Oltre 10.000 interazioni gestite senza intervento umano diretto.</p>
+</div>
+<div class="anim delay-200 text-center p-8 bg-slate-50 rounded-3xl">
+<div class="text-brand-primary mb-4">
+<svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="text-xl font-bold mb-2">Customer Care AI</div>
+<p class="text-slate-500 text-sm">Risposte immediate h24, aumentando il tasso di soddisfazione del 60%.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Measurable Results -->
+<!-- BEGIN: Testimonials -->
+<section class="py-24 bg-slate-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl font-extrabold text-center mb-16 anim">Cosa Dicono di Noi</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 anim">
+<p class="text-slate-600 mb-6 italic">"TEKWORN ha rivoluzionato il modo in cui gestiamo le prenotazioni. Abbiamo dimezzato il carico di lavoro amministrativo."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+<div>
+<p class="font-bold text-sm">Marco Ferretti</p>
+<p class="text-xs text-slate-400">CEO, TechStore Italia</p>
+</div>
+</div>
+</div>
+<div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 anim delay-100">
+<p class="text-slate-600 mb-6 italic">"Il nuovo sito non è solo bello, ma è una vera macchina da lead. L'automazione post-vendita è impeccabile."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+<div>
+<p class="font-bold text-sm">Giulia Mancini</p>
+<p class="text-xs text-slate-400">Marketing Director, Creative Agency</p>
+</div>
+</div>
+</div>
+<div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 anim delay-200">
+<p class="text-slate-600 mb-6 italic">"Finalmente un partner tecnico che capisce le esigenze di business prima ancora del codice."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+<div>
+<p class="font-bold text-sm">Andrea Russo</p>
+<p class="text-xs text-slate-400">Founder, Startup Hub</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Testimonials -->
+<!-- BEGIN: CTA Section -->
+<section class="py-20 relative overflow-hidden bg-[#2563EB] cta-grid">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="rounded-3xl p-12 md:p-20 text-center bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl">
+<div class="anim">
+<h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-white">
+                        Pronto a digitalizzare il tuo successo?
+                    </h2>
+<p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                        Unisciti alle aziende che hanno già ottimizzato i loro processi con TEKWORN. La nostra tecnologia è al servizio della tua crescita.
+                    </p>
+<a class="inline-flex items-center justify-center px-10 py-5 bg-white text-[#2563EB] font-bold rounded-custom hover:bg-blue-50 hover:scale-105 transition-all shadow-xl shadow-black/20" href="#contact">
+                        Prenota una chiamata
+                        <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-white/5 rounded-full blur-3xl -z-10"></div>
+</section>
+<!-- END: CTA Section -->
+<!-- BEGIN: Contact Section -->
+<section class="py-24 bg-white" id="contact">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 anim">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-extrabold mb-4">Mettiti in Contatto</h2>
+<p class="text-slate-500">Inizia oggi la tua trasformazione tecnica.</p>
+</div>
+<form class="space-y-6" data-purpose="contact-form" id="contactForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-400">Nome e Cognome</label>
+<input class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="nome" placeholder="Mario Rossi" required="" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-400">Email Aziendale</label>
+<input class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="email" placeholder="mario@azienda.it" required="" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-400">Telefono</label>
+<input class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="telefono" placeholder="+39 012 3456789" type="tel"/>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-400">Servizio d'Interesse</label>
+<select class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="servizio">
+<option value="automazione">Automazioni Aziendali</option>
+<option value="siti-web">Siti Web Professionali</option>
+<option value="web-app">Web App Personalizzate</option>
+<option value="consulenza">Consulenza Strategica</option>
+</select>
+</div>
+</div>
+<div class="space-y-1">
+<label class="text-xs font-bold uppercase text-slate-400">Messaggio</label>
+<textarea class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="messaggio" placeholder="Come possiamo aiutare il tuo workflow?" required="" rows="4"></textarea>
+</div>
+<button class="w-full py-4 bg-brand-dark text-white font-bold rounded-custom hover:bg-brand-primary transition-all shadow-xl" id="submitBtn" type="submit">Trasmetti Richiesta</button>
+<div class="hidden text-center p-4 rounded-custom text-sm font-bold" id="formFeedback"></div>
+</form>
+</div>
+</section>
+<!-- END: Contact Section -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="bg-white text-brand-dark pt-20 pb-10 border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-12 mb-20">
+<div class="col-span-2 anim">
+<div class="flex flex-col gap-4 mb-6">
+<img alt="TEKWORN Large Logo" class="h-24 w-auto object-contain self-start" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbeOFMUXrl1iVds1v7iTVfzP_s_p5CwNzk-kntFKJHX2191kVaH1yEM1Jhmn628bFdJyGz8W-_37syTfldDmFonQpSUICnZQ1Y2G-cH1OVnoHUDygXHNleoIlfQSFMDgV_JW0zmPiWMAYhh69nWkPIOvek0NXT4mAQxYK4E9aJczTItfKiDNEVomHxjv0TXQmohCQPjDUhzsWBVQlM9jf9mUsYWdX_52IG5DAdM7gw3GcMMrx0w1ugyxjbZ1WDWoSdHszUcmnl5w8l"/>
+</div>
+<p class="text-slate-500 max-w-sm">Leader del settore nell'automazione tecnica, colmiamo il divario tra l'eredità hardware e il futuro del software.</p>
+</div>
+<div class="anim delay-100">
+<h4 class="font-bold mb-6 text-brand-dark">Navigazione</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-brand-primary transition-colors" href="#about">Origini</a></li>
+<li><a class="hover:text-brand-primary transition-colors" href="#services">Servizi</a></li>
+<li><a class="hover:text-brand-primary transition-colors" href="#results">Metriche</a></li>
+<li><a class="hover:text-brand-primary transition-colors" href="#">Carriere</a></li>
+</ul>
+</div>
+<div class="anim delay-200">
+<h4 class="font-bold mb-6 text-brand-dark">Legale</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-brand-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-brand-primary transition-colors" href="#">Termini di Servizio</a></li>
+<li><a class="hover:text-brand-primary transition-colors" href="#">Audit di Sicurezza</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-slate-100 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest anim delay-300">
+<p>© 2023 TEKWORN Technical Systems. Tutti i diritti riservati.</p>
+<div class="flex gap-8">
+<a class="hover:text-brand-primary transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-brand-primary transition-colors" href="#">GitHub</a>
+<a class="hover:text-brand-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: Scripts -->
+<script data-purpose="preload-animation">
+    window.addEventListener('load', () => {
+        document.body.classList.remove('overflow-hidden');
+    });
+</script>
+<script data-purpose="scroll-animations">
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.anim').forEach(el => {
+      observer.observe(el);
+    });
+</script>
+<script data-purpose="form-submission">
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    const btn = document.getElementById('submitBtn');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const originalBtnText = btn.innerText;
+        btn.innerText = 'TRASMISSIONE IN CORSO...';
+        btn.disabled = true;
+        feedback.classList.add('hidden');
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          // Simulated API endpoint for submission
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+
+          if (response.ok) {
+            feedback.innerText = 'TRASMISSIONE COMPLETATA CON SUCCESSO';
+            feedback.classList.remove('hidden', 'text-red-500', 'bg-red-100');
+            feedback.classList.add('text-green-600', 'bg-green-100');
+            form.reset();
+          } else {
+            throw new Error('Errore nella trasmissione');
+          }
+        } catch (err) {
+          feedback.innerText = 'ERRORE NELLA TRASMISSIONE. RIPROVARE.';
+          feedback.classList.remove('hidden', 'text-green-600', 'bg-green-100');
+          feedback.classList.add('text-red-500', 'bg-red-100');
+        } finally {
+          btn.innerText = originalBtnText;
+          btn.disabled = false;
+        }
+      });
+    }
+</script>
+<!-- END: Scripts -->
+</body></html>
