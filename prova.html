@@ -1,565 +1,1301 @@
 <!DOCTYPE html>
 
-<html class="scroll-smooth" lang="it"><head>
+<html class="light" lang="it"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>TEKWORN | Automazioni e Sistemi Digitali</title>
-<meta content="TEKWORN - Automatizziamo il lavoro. Acceleriamo la crescita." name="description"/>
-<!-- Tailwind CSS v3 -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Inter -->
+<title>TEKWORN - Automazione e Crescita Digitale</title>
+<!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-              },
-              colors: {
-                brand: {
-                  light: '#f3f3fe',
-                  primary: '#004ac6', 
-                  accent: '#06b6d4', 
-                  dark: '#191b23',
-                  surface: '#faf8ff',
-                }
-              },
-              borderRadius: {
-                'custom': '8px',
-              }
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-highest": "#e1e2ed",
+                "surface-container-high": "#e7e7f3",
+                "on-surface-variant": "#434655",
+                "surface-container-low": "#f3f3fe",
+                "on-secondary-container": "#006172",
+                "surface-bright": "#faf8ff",
+                "surface-container-lowest": "#ffffff",
+                "primary": "#004ac6",
+                "outline": "#737686",
+                "on-primary-fixed": "#00174b",
+                "secondary-fixed-dim": "#4cd7f6",
+                "on-tertiary-container": "#ffede6",
+                "background": "#ffffff",
+                "primary-fixed-dim": "#b4c5ff",
+                "surface-tint": "#0053db",
+                "on-secondary-fixed-variant": "#004e5c",
+                "inverse-on-surface": "#f0f0fb",
+                "on-tertiary-fixed": "#360f00",
+                "on-background": "#0F172A",
+                "on-primary-container": "#eeefff",
+                "tertiary-fixed-dim": "#ffb596",
+                "on-secondary-fixed": "#001f26",
+                "inverse-surface": "#2e3039",
+                "outline-variant": "#c3c6d7",
+                "error-container": "#ffdad6",
+                "tertiary-container": "#bc4800",
+                "error": "#ba1a1a",
+                "primary-fixed": "#dbe1ff",
+                "surface-dim": "#d9d9e5",
+                "primary-container": "#2563eb",
+                "surface-container": "#ededf9",
+                "secondary-fixed": "#acedff",
+                "on-primary": "#ffffff",
+                "tertiary": "#943700",
+                "inverse-primary": "#b4c5ff",
+                "secondary-container": "#57dffe",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed": "#ffdbcd",
+                "secondary": "#00687a",
+                "on-tertiary-fixed-variant": "#7d2d00",
+                "surface": "#ffffff",
+                "on-surface": "#0F172A",
+                "on-tertiary": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-error": "#ffffff",
+                "surface-variant": "#e1e2ed",
+                "on-primary-fixed-variant": "#003ea8"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "3xl": "1.5rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "stack-lg": "2rem",
+                "stack-sm": "0.5rem",
+                "section-padding": "clamp(4rem, 8vw, 8rem)",
+                "gutter": "1.5rem",
+                "stack-md": "1rem",
+                "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                "sans": ["Inter", "sans-serif"]
             }
           }
         }
+      }
     </script>
-<style data-purpose="custom-layout">
-        .bg-grid-pattern {
-          background-image: radial-gradient(circle, #004ac610 1px, transparent 1px);
-          background-size: 30px 30px;
+<style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #ffffff; 
+            color: #0F172A; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+        }
+        
+        h2 { 
+            font-size: clamp(1.75rem, 5vw, 3rem) !important; 
+            font-weight: 700 !important; 
+            color: #0F172A !important; 
+            line-height: 1.15 !important; 
+            letter-spacing: -0.02em !important; 
+        }
+
+        .container {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .section {
+            padding-top: clamp(4rem, 8vw, 8rem);
+            padding-bottom: clamp(4rem, 8vw, 8rem);
+        }
+
+        .section--alt {
+            background-color: #F8FAFC;
+            border-top: 1px solid #c3c6d750;
+            border-bottom: 1px solid #c3c6d750;
+        }
+
+        .custom-card {
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        :root {
+            --shadow-hover: 0 20px 40px -8px rgba(37, 99, 235, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+            --duration: 0.3s;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+            --color-border: #E2E8F0;
+            --radius-xl: 1.5rem;
+        }
+
+        .custom-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(37,99,235,0.2);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn--primary {
+            background: #2563EB;
+            color: #fff;
+        }
+
+        .btn--primary:hover {
+            box-shadow: 0 8px 24px rgba(37,99,235,0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            border: 1px solid #E2E8F0;
+            color: #64748B;
+        }
+
+        .btn--outline:hover {
+            border-color: #2563EB;
+            color: #2563EB;
+        }
+
+        .hero-grid {
+            background-image: 
+                linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
         .cta-grid {
-          background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-          background-size: 30px 30px;
-        }
-        
-        .glass-card {
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
         }
 
+        .cta-grid h2 {
+            color: #ffffff !important;
+        }
+
+        /* Animation System */
         .anim {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
         }
 
-        .anim.active {
-          opacity: 1;
-          transform: translateY(0);
+        .anim.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        .custom-card.anim.visible {
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            will-change: auto;
+        }
+
+        /* Hover scale override — specificità 3 classi (0,3,0) > .anim.visible (0,2,0) */
+        .custom-card.anim.visible:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .anim-delay-1 { transition-delay: 100ms; }
+        .anim-delay-2 { transition-delay: 200ms; }
+        .anim-delay-3 { transition-delay: 300ms; }
+        .anim-delay-4 { transition-delay: 400ms; }
+        .anim-delay-5 { transition-delay: 500ms; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.05);
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
 
         .gradient-text {
-          background: linear-gradient(135deg, #004ac6 0%, #06b6d4 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+            color: #2563EB;
         }
 
-        @keyframes textPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
+        nav#main-nav {
+            transition: all 0.3s ease-in-out;
         }
-        .anagram-swap {
-          animation: textPulse 3s infinite;
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #2563EB;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.closed {
+            transform: translateX(100%);
+        }
+
+        /* Preload */
+        #preload-overlay {
+            transition: opacity 0.8s ease-out;
+        }
+        #preload-overlay.preload-fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .preload-letter-cell {
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .preload-glitch {
+            position: absolute;
+            font-weight: 900;
+            color: rgba(15,23,42,0.4);
+            pointer-events: none;
+            animation: preloadGlitch 0.4s ease-out forwards;
+        }
+        @keyframes preloadGlitch {
+            0% { opacity: 0.8; filter: blur(2px); transform: translate(2px, -1px); }
+            100% { opacity: 0; filter: blur(4px); transform: translate(0, 0); }
         }
     </style>
 </head>
-<body class="bg-brand-surface font-sans text-brand-dark overflow-x-hidden">
-<!-- BEGIN: Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between items-center h-20">
-<div class="flex items-center">
-<img alt="TEKWORN Logo" class="h-10 w-auto" data-purpose="brand-logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbeOFMUXrl1iVds1v7iTVfzP_s_p5CwNzk-kntFKJHX2191kVaH1yEM1Jhmn628bFdJyGz8W-_37syTfldDmFonQpSUICnZQ1Y2G-cH1OVnoHUDygXHNleoIlfQSFMDgV_JW0zmPiWMAYhh69nWkPIOvek0NXT4mAQxYK4E9aJczTItfKiDNEVomHxjv0TXQmohCQPjDUhzsWBVQlM9jf9mUsYWdX_52IG5DAdM7gw3GcMMrx0w1ugyxjbZ1WDWoSdHszUcmnl5w8l"/>
+<body id="home">
+<!-- Preload Overlay -->
+<div id="preload-overlay" class="fixed inset-0 z-[300] bg-white flex flex-col items-center justify-center">
+    <div class="absolute inset-0 pointer-events-none opacity-5" style="background-image: linear-gradient(to right, hsla(190,100%,50%,0.15) 1px, transparent 1px), linear-gradient(to bottom, hsla(190,100%,50%,0.15) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    <div id="preload-label" style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; color: #94A3B8; margin-bottom: 1.5rem; opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease; transform: translateY(8px);">Initializing System</div>
+    <div style="position: relative; display: flex; align-items: center; justify-content: center; padding: 0 1rem;">
+        <div class="flex gap-2 sm:gap-3 md:gap-4 relative" id="preload-letters"></div>
+        <div id="preload-scanner" style="position: absolute; top: 0; bottom: 0; width: 2px; background: hsl(190,100%,50%); z-index: 20; pointer-events: none; opacity: 0; left: -10%; box-shadow: 0 0 20px hsl(190,100%,50%), 0 0 60px hsla(190,100%,50%,0.5);">
+            <div style="position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background: hsl(190,100%,50%); box-shadow: 0 0 12px hsl(190,100%,50%);"></div>
+            <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 12px; height: 12px; border-radius: 50%; background: hsl(190,100%,50%); box-shadow: 0 0 12px hsl(190,100%,50%);"></div>
+        </div>
+    </div>
+    <div style="margin-top: 2rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: #94A3B8;">
+        <span id="preload-status-text">Loading</span>
+        <div style="display: flex; gap: 4px;">
+            <span style="width: 4px; height: 4px; background: #94A3B8; border-radius: 50%; display: inline-block; animation: pulse 1.5s infinite;"></span>
+            <span style="width: 4px; height: 4px; background: #94A3B8; border-radius: 50%; display: inline-block; animation: pulse 1.5s 0.2s infinite;"></span>
+            <span style="width: 4px; height: 4px; background: #94A3B8; border-radius: 50%; display: inline-block; animation: pulse 1.5s 0.4s infinite;"></span>
+        </div>
+    </div>
+    <!-- Logo screen mostrato dopo lo scanner -->
+    <div id="preload-logo-screen" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.6s ease;pointer-events:none;z-index:10;background:#fff;">
+        <img src="/img/transparent_logo_copia.png" alt="TEKWORN" style="height:clamp(3rem,10vw,5rem);width:auto;">
+    </div>
 </div>
-<div class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
-<a class="hover:text-brand-primary transition-colors" href="#about">CHI SIAMO</a>
-<a class="hover:text-brand-primary transition-colors" href="#services">SERVIZI</a>
-<a class="hover:text-brand-primary transition-colors" href="#results">RISULTATI</a>
-<a class="px-5 py-2.5 bg-brand-primary text-white rounded-custom hover:bg-brand-dark transition-all shadow-lg shadow-blue-500/20" href="#contact">INIZIAMO</a>
+<!-- Top Navigation Bar -->
+<nav class="fixed w-full top-0 z-[100] transition-all duration-300 backdrop-blur-xl bg-transparent" id="main-nav">
+<div class="container flex items-center justify-between py-4">
+<!-- Logo -->
+<a class="flex items-center gap-3 group" href="#home">
+<img alt="TEKWORN Logo" class="h-10 w-auto" src="/img/transparent_logo_copia.png"/>
+<!-- <span class="text-2xl font-bold tracking-tight text-primary">TEKWORN</span> -->
+</a>
+<!-- Desktop Navigation -->
+<div class="hidden md:flex items-center gap-8">
+<a class="nav-link text-sm text-on-surface font-medium" href="#home">Home</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#chi-siamo">Chi siamo</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#servizi">Servizi</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#progetti">Progetti</a>
+<a class="nav-link text-sm text-on-surface font-medium" href="#contatti">Contatti</a>
 </div>
-<div class="md:hidden">
-<button class="text-brand-dark p-2">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16m7 6H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<!-- Action Button -->
+<div class="hidden lg:block">
+<a class="btn btn--primary" href="#contatti">Consulenza gratuita</a>
+</div>
+<!-- Mobile Toggle -->
+<button class="md:hidden text-on-surface p-2 focus:outline-none" id="menu-toggle">
+<span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+<span class="material-symbols-outlined text-3xl hidden" id="close-icon">close</span>
 </button>
 </div>
-</div>
-</div>
 </nav>
-<!-- END: Navigation -->
-<main class="relative">
-<!-- BEGIN: Hero Section -->
-<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-  <!--Video bg-->
-  <div class="absolute inset-0 -z-20">
-        <video
-            class="w-full h-full object-cover"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            fetchpriority="high"
-        >
-            <source src="/img/herobg.mp4" type="video/mp4">
-        </video>
-    </div>
-  
-<script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
-<script>
-            class ThreeJSScene extends HTMLElement {
-                connectedCallback() {
-                    const container = this;
-                    const src = this.getAttribute('src');
-                    if (src) {
-                        const scriptContent = src;
-                        const initScene = new Function('container', scriptContent);
-                        initScene(container);
-                    }
-                }
-            }
-            customElements.define('threejs-scene', ThreeJSScene);
-        </script>
-<!-- Background Animation Placeholder Integration -->
-<div class="absolute inset-0 -z-10 opacity-30">
-            {{DATA:ANIMATION:ANIMATION_28}}
-        </div>
-<div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl"></div>
-<div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 bg-brand-accent/5 rounded-full blur-3xl"></div>
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="grid lg:grid-cols-2 gap-16 items-center">
-<div class="anim">
-<div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-primary bg-brand-primary/10 rounded-full border border-brand-primary/20">
-                        AUTOMAZIONE SISTEMI 2.0
-                    </div>
-<h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
-<span class="gradient-text">Automatizziamo il lavoro.</span><br/> Acceleriamo la crescita.
-                    </h1>
-<p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
+<!-- Mobile Menu Overlay -->
+<div class="fixed inset-0 bg-surface z-[90] flex flex-col items-center justify-center closed md:hidden" id="mobile-menu">
+<div class="flex flex-col items-center gap-10">
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#home">Home</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#chi-siamo">Chi siamo</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#servizi">Servizi</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#progetti">Progetti</a>
+<a class="mobile-nav-link text-2xl font-bold text-on-surface" href="#contatti">Contatti</a>
+<a class="mt-4 btn btn--primary py-4 px-8" href="#contatti">Consulenza gratuita</a>
+</div>
+</div>
+<main class="relative min-h-screen flex items-center overflow-hidden hero-grid pt-24 lg:pt-0">
+<!-- Background Orbs -->
+<div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-secondary-container/5 rounded-full blur-[100px] -z-10"></div>
+<div class="container section w-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+<!-- Left Content -->
+<div class="flex flex-col gap-stack-md z-10">
+<div class="anim flex items-center gap-2 bg-primary/10 border border-primary/20 w-fit px-4 py-1.5 rounded-full">
+<span class="w-2 h-2 bg-primary rounded-full pulse-dot"></span>
+<span class="text-primary text-xs font-semibold uppercase tracking-wider">Partner tecnologico per la crescita</span>
+</div>
+<h1 class="anim anim-delay-1 text-4xl lg:text-6xl font-bold leading-tight">
+                        Automatizziamo il lavoro. <br/>
+<span class="gradient-text">Acceleriamo la crescita.</span>
+</h1>
+<p class="anim anim-delay-2 text-lg text-on-surface-variant max-w-lg">
                         TEKWORN aiuta aziende e professionisti a eliminare attività ripetitive con automazioni, software e sistemi digitali su misura. Progettiamo il futuro del tuo workflow.
                     </p>
-<div class="flex flex-col sm:flex-row gap-4">
-<a class="px-8 py-4 bg-brand-primary text-white text-center font-bold rounded-custom hover:shadow-2xl hover:scale-[1.02] transition-all" href="#contact">Inizia Ora</a>
-<a class="px-8 py-4 bg-white text-brand-dark text-center font-bold rounded-custom border border-slate-200 hover:bg-slate-50 transition-all" href="#about">La Nostra Visione</a>
+<div class="anim anim-delay-3 flex flex-wrap gap-4 mt-4">
+<a class="btn btn--primary py-4 px-8 text-base" href="#contatti">Consulenza gratuita</a>
+<a class="btn btn--outline py-4 px-8 text-base" href="#servizi">Servizi</a>
 </div>
-<div class="mt-10 flex items-center gap-8">
+<!-- Trust Stats -->
+<div class="anim anim-delay-4 grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-outline-variant/30">
 <div>
-<p class="text-2xl font-black text-brand-dark">50+</p>
-<p class="text-xs font-bold text-slate-400 uppercase">Progetti</p>
-</div>
-<div class="w-px h-8 bg-slate-200"></div>
-<div>
-<p class="text-2xl font-black text-brand-dark">98%</p>
-<p class="text-xs font-bold text-slate-400 uppercase">Soddisfazione</p>
-</div>
-</div>
-</div>
-<div class="relative anim delay-200">
-<div class="relative z-20 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-<img alt="Technical Dashboard Preview" class="w-full h-auto" data-purpose="hero-dashboard-preview" src="https://lh3.googleusercontent.com/aida/AP1WRLsUJnYXoFUbcWCyGffnLkV1JMGjBM2Aj2ArTysTbjH9nff7itSUQ1qK8dJuzCuiQXq_6pF7nZ2q8TwDrbQcrCJOimpBzCJvirXjAUluQFqNQG4KpLqd-1kx1Z7bho2CKndH0SDorUCwTGAJ79bbJzXmqNc_xOI98o5vP61zYyX4q5zqOBghEUhy1Xgm4uwWnb2f9OCK4yqrfVY0e7AuCDpN-NDVZ1s00kv1OuG8z1E863OessR6HJU28bvJ"/>
-</div>
-<div class="absolute -top-6 -right-6 w-full h-full border-2 border-brand-primary/20 rounded-2xl -z-10"></div>
-<div class="absolute -bottom-8 -left-8 glass-card p-6 rounded-custom hidden xl:block shadow-xl">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-600">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div class="text-2xl font-bold text-primary">50+</div>
+<div class="text-sm text-on-surface-variant">Progetti</div>
 </div>
 <div>
-<p class="text-xs font-bold text-slate-500">STATO SISTEMA</p>
-<p class="font-bold text-slate-800">100% Operativo</p>
+<div class="text-2xl font-bold text-primary">98%</div>
+<div class="text-sm text-on-surface-variant">Soddisfazione</div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Hero Section -->
-<!-- BEGIN: About Section -->
-<section class="py-24 bg-brand-dark text-white relative overflow-hidden" id="about">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-<div class="anim">
-<h2 class="text-sm font-bold tracking-[0.3em] text-brand-accent mb-12 uppercase">L'ORIGINE</h2>
-<div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-<div class="text-center">
-<span class="block text-4xl md:text-6xl font-light text-slate-400 mb-2">DA</span>
-<span class="block text-6xl md:text-8xl font-black tracking-tighter">NETWORK</span>
-</div>
-<div class="flex items-center justify-center">
-<svg class="w-12 h-12 text-brand-accent animate-pulse" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div class="text-center">
-<span class="block text-4xl md:text-6xl font-light text-slate-400 mb-2">A</span>
-<span class="block text-6xl md:text-8xl font-black tracking-tighter gradient-text">TEKWORN</span>
-</div>
-</div>
-<h3 class="mt-16 text-3xl font-extrabold">Da NETWORK a TEKWORN</h3>
-<p class="mt-6 text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                    Come riorganizziamo le lettere per formare il nostro nome, così riorganizziamo i processi aziendali per creare efficienza. Abbiamo preso l'integrità strutturale di una <span class="text-white italic">Network</span> e l'abbiamo combinata con l'<span class="text-white italic">Automazione Tecnica</span> per creare TEKWORN.
-                </p>
-<div class="mt-12 p-8 bg-white/5 border border-white/10 rounded-3xl max-w-2xl mx-auto text-left">
-<h4 class="text-brand-accent font-bold mb-2">La nostra Visione</h4>
-<p class="text-slate-300">Non vendiamo solo software; vendiamo tempo. Crediamo che ogni minuto risparmiato su un'attività ripetitiva sia un minuto investito nella creatività e nella crescita strategica del tuo business.</p>
-</div>
-</div>
-</div>
-<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: linear-gradient(#004ac6 1px, transparent 1px), linear-gradient(90deg, #004ac6 1px, transparent 1px); background-size: 50px 50px;"></div>
-</section>
-<!-- END: About Section -->
-<!-- BEGIN: Services -->
-<section class="py-24 bg-white" id="services">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-20 anim">
-<h2 class="text-4xl font-extrabold mb-4">Soluzioni Sofisticate</h2>
-<p class="text-slate-600 max-w-2xl mx-auto">Semplifichiamo la complessità attraverso flussi di automazione intelligenti e piattaforme digitali moderne.</p>
-</div>
-<div class="grid md:grid-cols-3 md:grid-rows-2 gap-6 h-auto md:h-[600px] anim delay-100">
-<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-3xl bg-slate-100 p-10 flex flex-col justify-end transition-all hover:shadow-2xl anim">
-<div class="absolute top-0 right-0 p-8">
-<div class="w-16 h-16 bg-brand-primary text-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-</div>
-<h3 class="text-3xl font-bold mb-4">Automazioni Aziendali</h3>
-<p class="text-slate-600 max-w-md">Elimina i colli di bottiglia operativi. Colleghiamo i tuoi strumenti (CRM, Mail, Fogli di calcolo) per farli lavorare al posto tuo, riducendo errori e costi.</p>
-<div class="mt-6 flex gap-4">
-<span class="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200">Zapier / Make</span>
-<span class="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200">AI Agents</span>
-<span class="text-xs font-bold bg-white px-3 py-1 rounded-full border border-slate-200">Workflows</span>
-</div>
-</div>
-<div class="group relative overflow-hidden rounded-3xl bg-brand-primary p-8 text-white transition-all hover:bg-brand-dark anim delay-200">
-<h3 class="text-xl font-bold mb-2">Siti Web Professionali</h3>
-<p class="text-blue-100 text-sm">Realizziamo vetrine digitali ad alte prestazioni, ottimizzate per la conversione e il posizionamento sui motori di ricerca.</p>
-<div class="absolute bottom-4 right-4 opacity-20">
-<svg class="w-24 h-24" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-</div>
-</div>
-<div class="group relative overflow-hidden rounded-3xl bg-brand-accent p-8 text-white transition-all hover:bg-brand-dark anim delay-300">
-<h3 class="text-xl font-bold mb-2">Web App Personalizzate</h3>
-<p class="text-cyan-50 text-sm">Sviluppiamo software su misura accessibili da browser, pronti a scalare con le tue necessità aziendali.</p>
-<div class="absolute bottom-4 right-4 opacity-20">
-<svg class="w-24 h-24" fill="currentColor" viewbox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Services -->
-<!-- BEGIN: Concrete Examples -->
-<section class="py-24 bg-slate-50 border-y border-slate-200">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<h2 class="text-3xl font-extrabold text-center mb-16 anim">Trasformazioni Concrete</h2>
-<div class="grid md:grid-cols-2 gap-12 anim delay-100">
-<div class="space-y-6">
-<!-- Example 1 -->
-<div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative anim">
-<h4 class="text-lg font-bold mb-4">Gestione Lead CRM</h4>
-<div class="space-y-4">
-<div class="flex items-start gap-3">
-<span class="text-red-500 font-bold">Prima:</span>
-<span class="text-slate-600 italic">Inserimento manuale dei dati dai form, ritardi di risposta di 24h.</span>
-</div>
-<div class="flex items-start gap-3">
-<span class="text-green-600 font-bold">Dopo:</span>
-<span class="text-slate-700">Sincronizzazione istantanea, alert su Slack e auto-risposta via email.</span>
-</div>
-<div class="pt-4 border-t border-slate-100">
-<span class="text-brand-primary font-black uppercase text-xs">Risultato: +40% conversioni</span>
-</div>
-</div>
-</div>
-<!-- Example 2 -->
-<div class="p-8 rounded-3xl bg-brand-dark text-white shadow-2xl relative anim delay-100">
-<h4 class="text-lg font-bold mb-4">Ciclo di Fatturazione</h4>
-<div class="space-y-4">
-<div class="flex items-start gap-3">
-<span class="text-red-400 font-bold">Prima:</span>
-<span class="text-slate-400 italic">Controllo manuale dei pagamenti e invio solleciti via mail ogni settimana.</span>
-</div>
-<div class="flex items-start gap-3">
-<span class="text-brand-accent font-bold">Dopo:</span>
-<span class="text-slate-200">Sistema automatizzato che rileva il pagamento e gestisce i solleciti in autonomia.</span>
-</div>
-<div class="pt-4 border-t border-white/10">
-<span class="text-brand-accent font-black uppercase text-xs">Risultato: -15h di lavoro/mese</span>
-</div>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-center anim delay-200">
-<div class="relative w-full max-w-md aspect-square bg-white rounded-3xl shadow-xl overflow-hidden p-2">
-<div class="w-full h-full border-2 border-dashed border-slate-200 rounded-2xl flex items-center justify-center bg-grid-pattern">
-<div class="text-center p-8">
-<div class="text-6xl font-black text-brand-primary mb-2">-94%</div>
-<p class="font-bold text-slate-800">Tempo di Deployment Ridotto</p>
-<p class="text-sm text-slate-500 mt-2">Basato su audit aziendale media impresa, 2023.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Concrete Examples -->
-<!-- BEGIN: Measurable Results -->
-<section class="py-24 bg-white" id="results">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<h2 class="text-3xl font-extrabold text-center mb-16 anim">Risultati Misurabili</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="anim text-center p-8 bg-slate-50 rounded-3xl">
-<div class="text-brand-primary mb-4">
-<svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div class="text-xl font-bold mb-2">Ottimizzazione Magazzino</div>
-<p class="text-slate-500 text-sm">Riduzione degli sprechi del 25% tramite sistemi di tracciamento automatizzati.</p>
-</div>
-<div class="anim delay-100 text-center p-8 bg-slate-50 rounded-3xl">
-<div class="text-brand-primary mb-4">
-<svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div class="text-xl font-bold mb-2">Gestione Clienti Automatizzata</div>
-<p class="text-slate-500 text-sm">Oltre 10.000 interazioni gestite senza intervento umano diretto.</p>
-</div>
-<div class="anim delay-200 text-center p-8 bg-slate-50 rounded-3xl">
-<div class="text-brand-primary mb-4">
-<svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</div>
-<div class="text-xl font-bold mb-2">Customer Care AI</div>
-<p class="text-slate-500 text-sm">Risposte immediate h24, aumentando il tasso di soddisfazione del 60%.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Measurable Results -->
-<!-- BEGIN: Testimonials -->
-<section class="py-24 bg-slate-50">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<h2 class="text-3xl font-extrabold text-center mb-16 anim">Cosa Dicono di Noi</h2>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 anim">
-<p class="text-slate-600 mb-6 italic">"TEKWORN ha rivoluzionato il modo in cui gestiamo le prenotazioni. Abbiamo dimezzato il carico di lavoro amministrativo."</p>
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-slate-200 rounded-full"></div>
 <div>
-<p class="font-bold text-sm">Marco Ferretti</p>
-<p class="text-xs text-slate-400">CEO, TechStore Italia</p>
+<div class="text-2xl font-bold text-primary">24h</div>
+<div class="text-sm text-on-surface-variant">Risposta</div>
 </div>
 </div>
 </div>
-<div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 anim delay-100">
-<p class="text-slate-600 mb-6 italic">"Il nuovo sito non è solo bello, ma è una vera macchina da lead. L'automazione post-vendita è impeccabile."</p>
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+<!-- Right Content -->
+<div class="relative anim anim-delay-2 hidden lg:block">
+<div class="relative z-10 floating">
+<!-- Main Dashboard Frame -->
+<div class="glass-card p-4 rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Automazione Dashboard" class="w-full h-auto rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZPIcYQ-PuXy8ltHCvA6YUl3rpaX-fUMuPqAW_Hm1WuDt30qX4X_rPmemiRnMhMup7EkRibFjopo9BEusrgoJNiPg3nrS_9ifKqvjMkHNMPVvmVqDms7WEFMEK6maeNatd74y2v7H35Ns88wGTzsy9R7E6IVo1S1FxAS5heNki26u4tgNXzf2iIxh1_uenz7Pq2xkXrnxTKh-vivCkkFjuR6wHVIAIMmk_BigaSLEJCAahlHBE9A3iAnHAQsp3hErAEZzPtWafr81d"/>
+</div>
+<!-- Floating UI Elements -->
+<div class="absolute -top-6 -right-6 glass-card p-4 rounded-2xl floating transition-all duration-[8s] delay-700">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
 <div>
-<p class="font-bold text-sm">Giulia Mancini</p>
-<p class="text-xs text-slate-400">Marketing Director, Creative Agency</p>
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Efficiency</div>
+<div class="text-sm font-bold text-on-surface">+42% Optimization</div>
 </div>
 </div>
 </div>
-<div class="p-8 bg-white rounded-3xl shadow-sm border border-slate-100 anim delay-200">
-<p class="text-slate-600 mb-6 italic">"Finalmente un partner tecnico che capisce le esigenze di business prima ancora del codice."</p>
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 bg-slate-200 rounded-full"></div>
-<div>
-<p class="font-bold text-sm">Andrea Russo</p>
-<p class="text-xs text-slate-400">Founder, Startup Hub</p>
+<div class="absolute -bottom-10 -left-10 glass-card p-5 rounded-2xl floating transition-all duration-[10s] delay-300">
+<div class="flex flex-col gap-2">
+<div class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">AI Analysis</div>
+<div class="flex items-center gap-2">
+<div class="h-2 w-24 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-4/5 bg-primary rounded-full"></div>
+</div>
+<span class="text-xs font-bold">80%</span>
+</div>
+<div class="text-[10px] text-primary font-semibold">Workflow Syncing...</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<!-- END: Testimonials -->
-<!-- BEGIN: CTA Section -->
-<section class="py-20 relative overflow-hidden bg-[#2563EB] cta-grid">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="rounded-3xl p-12 md:p-20 text-center bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl">
-<div class="anim">
-<h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-white">
-                        Pronto a digitalizzare il tuo successo?
-                    </h2>
-<p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                        Unisciti alle aziende che hanno già ottimizzato i loro processi con TEKWORN. La nostra tecnologia è al servizio della tua crescita.
+</div>
+</main>
+<section class="section section--alt anim" id="chi-siamo">
+<div class="container">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center mb-16">
+<div class="flex flex-col gap-stack-md anim">
+<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 w-fit px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">shuffle</span>
+<span class="text-primary text-xs font-semibold uppercase tracking-wider">L'origine del nome</span>
+</div>
+<h2 class="tracking-tight">
+                        Da <span class="line-through text-outline">NETWORK</span> a <br/>
+<span class="gradient-text">TEKWORN</span>
+</h2>
+<p class="text-lg text-on-surface-variant">
+                        Come riorganizziamo le lettere per formare il nostro nome, così riorganizziamo i processi aziendali per creare efficienza. TEKWORN nasce dall'idea di trasformare reti complesse in flussi di lavoro ottimizzati e intelligenti.
                     </p>
-<a class="inline-flex items-center justify-center px-10 py-5 bg-white text-[#2563EB] font-bold rounded-custom hover:bg-blue-50 hover:scale-105 transition-all shadow-xl shadow-black/20" href="#contact">
-                        Prenota una chiamata
-                        <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<div class="relative anim anim-delay-2">
+<div class="custom-card border-primary/10">
+<div class="flex flex-col gap-4">
+<div class="text-primary font-bold text-xl">La nostra Visione</div>
+<div class="h-1 w-20 bg-primary rounded-full"></div>
+<p class="text-on-surface-variant italic">
+                                "Non ci limitiamo a implementare software; ridisegniamo il modo in cui le persone interagiscono con la tecnologia, rendendo l'automazione un alleato invisibile ma potente."
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="custom-card anim anim-delay-1">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">target</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Precisione</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Eliminiamo l'errore umano automatizzando i compiti ripetitivi con accuratezza millimetrica.</p>
+</div>
+<div class="custom-card anim anim-delay-2">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Innovazione</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Utilizziamo le ultime tecnologie AI per anticipare le necessità del mercato e del tuo business.</p>
+</div>
+<div class="custom-card anim anim-delay-3">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">rocket_launch</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Crescita</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Scaliamo i tuoi processi per permetterti di concentrarti solo su ciò che porta valore reale.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sezione Servizi -->
+<section class="section bg-white anim" id="servizi">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<h2 class="tracking-tight">Tecnologia che lavora <span class="gradient-text">per te</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Soluzioni digitali progettate per generare valore reale al tuo business.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Automazioni Aziendali -->
+<a class="group col-span-1 md:col-span-2 relative p-8 rounded-3xl bg-[#2563EB] text-white overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.01] anim anim-delay-1" href="#contatti">
+<div class="absolute top-6 right-6 flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+<span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
+<span class="text-xs font-bold uppercase tracking-wider">Attivo</span>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md">
+<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="white"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+</div>
+<div>
+<h3 class="text-3xl font-bold mb-4">Automazioni Aziendali</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-white/10 text-white text-xs px-3 py-1 rounded-full border border-white/20">Flussi automatizzati</span>
+<span class="bg-white/10 text-white text-xs px-3 py-1 rounded-full border border-white/20">Integrazioni API</span>
+<span class="bg-white/10 text-white text-xs px-3 py-1 rounded-full border border-white/20">IA Generativa</span>
+</div>
+<p class="text-white/80 max-w-xl text-base leading-relaxed">Ottimizziamo ogni fase del tuo workflow aziendale eliminando i colli di bottiglia e riducendo i tempi operativi fino al 70%.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-white font-bold group-hover:gap-4 transition-all duration-300">
+                            Scopri il servizio <span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Siti Web Professionali -->
+<a class="group custom-card anim anim-delay-2" href="#contatti">
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">language</span>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-3 text-on-surface">Siti Web Professionali</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Design responsive</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">SEO Optimized</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Presenza digitale d'impatto con siti veloci, moderni e ottimizzati per convertire i visitatori in clienti.</p>
+</div>
+</div>
+<div class="btn btn--outline border-none !p-0 !bg-transparent group-hover:text-primary transition-colors">
+                            Parliamo del progetto <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</a>
+<!-- Web App Personalizzate -->
+<a class="group custom-card anim anim-delay-3" href="#contatti">
+<div class="flex flex-col h-full justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">app_registration</span>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-3 text-on-surface">Web App Personalizzate</h3>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Soluzioni SaaS</span>
+<span class="bg-surface-container text-on-surface-variant text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">User-Centric</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sviluppiamo applicazioni web scalabili che risolvono problemi specifici del tuo mercato di riferimento.</p>
+</div>
+</div>
+<div class="btn btn--outline border-none !p-0 !bg-transparent group-hover:text-primary transition-colors">
+                            Parliamo del progetto <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
 </a>
 </div>
 </div>
-</div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-white/5 rounded-full blur-3xl -z-10"></div>
 </section>
-<!-- END: CTA Section -->
-<!-- BEGIN: Contact Section -->
-<section class="py-24 bg-white" id="contact">
-<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 anim">
-<div class="text-center mb-12">
-<h2 class="text-4xl font-extrabold mb-4">Mettiti in Contatto</h2>
-<p class="text-slate-500">Inizia oggi la tua trasformazione tecnica.</p>
+<section class="section section--alt anim" id="esempi-concreti">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<h2 class="tracking-tight">Esempi <span class="gradient-text">concreti</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Ecco come le nostre automazioni trasformano il lavoro quotidiano.</p>
 </div>
-<form class="space-y-6" data-purpose="contact-form" id="contactForm">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-1">
-<label class="text-xs font-bold uppercase text-slate-400">Nome e Cognome</label>
-<input class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="nome" placeholder="Mario Rossi" required="" type="text"/>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Card 1: Gestione Lead -->
+<div class="custom-card overflow-hidden !p-0 anim anim-delay-1">
+<div class="p-8">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">group_add</span>
 </div>
-<div class="space-y-1">
-<label class="text-xs font-bold uppercase text-slate-400">Email Aziendale</label>
-<input class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="email" placeholder="mario@azienda.it" required="" type="email"/>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="space-y-1">
-<label class="text-xs font-bold uppercase text-slate-400">Telefono</label>
-<input class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="telefono" placeholder="+39 012 3456789" type="tel"/>
-</div>
-<div class="space-y-1">
-<label class="text-xs font-bold uppercase text-slate-400">Servizio d'Interesse</label>
-<select class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="servizio">
-<option value="automazione">Automazioni Aziendali</option>
-<option value="siti-web">Siti Web Professionali</option>
-<option value="web-app">Web App Personalizzate</option>
-<option value="consulenza">Consulenza Strategica</option>
-</select>
+<div>
+<h3 class="text-xl font-bold text-on-surface">Gestione Lead CRM</h3>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Settore Immobiliare</p>
 </div>
 </div>
-<div class="space-y-1">
-<label class="text-xs font-bold uppercase text-slate-400">Messaggio</label>
-<textarea class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all" name="messaggio" placeholder="Come possiamo aiutare il tuo workflow?" required="" rows="4"></textarea>
+<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-error uppercase tracking-widest">Prima</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="text-error">•</span> Inserimento manuale</li>
+<li class="flex items-start gap-2"><span class="text-error">•</span> Ritardi di 24-48h</li>
+</ul>
 </div>
-<button class="w-full py-4 bg-brand-dark text-white font-bold rounded-custom hover:bg-brand-primary transition-all shadow-xl" id="submitBtn" type="submit">Trasmetti Richiesta</button>
-<div class="hidden text-center p-4 rounded-custom text-sm font-bold" id="formFeedback"></div>
+<div class="flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
+</div>
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-green-500 uppercase tracking-widest">Dopo</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Sincronizzazione istantanea</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Follow-up automatico</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 border-t border-outline-variant/30 p-4">
+<div class="text-center font-bold text-primary">Risultato: +300% velocità di risposta</div>
+</div>
+</div>
+<!-- Card 2: Fatturazione -->
+<div class="custom-card overflow-hidden !p-0 anim anim-delay-2">
+<div class="p-8">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-on-surface">Ciclo di Fatturazione</h3>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">E-commerce B2B</p>
+</div>
+</div>
+<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-error uppercase tracking-widest">Prima</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="text-error">•</span> 15 ore/settimana</li>
+<li class="flex items-start gap-2"><span class="text-error">•</span> Errori di calcolo</li>
+</ul>
+</div>
+<div class="flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
+</div>
+<div class="space-y-3">
+<div class="text-[10px] font-bold text-green-500 uppercase tracking-widest">Dopo</div>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Processo 100% autonomo</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-green-500 text-xs">check_circle</span> Zero errori umani</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 border-t border-outline-variant/30 p-4">
+<div class="text-center font-bold text-primary">Risultato: Risparmio di 60 ore/mese</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section bg-white anim" id="progetti">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<div class="flex items-center gap-2 bg-primary/10 border border-primary/20 w-fit px-4 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">analytics</span>
+<span class="text-primary text-xs font-semibold uppercase tracking-wider">Case Study</span>
+</div>
+<h2 class="tracking-tight">Risultati <span class="gradient-text">misurabili</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">Analisi dettagliata dell'impatto reale generato dalle nostre soluzioni su diverse realtà aziendali.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="custom-card anim anim-delay-1">
+<div class="h-1 w-12 bg-primary mb-6"></div>
+<div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">Logistica &amp; Supply Chain</div>
+<h3 class="text-xl font-bold text-on-surface mb-4">Ottimizzazione Magazzino</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Implementazione di un sistema di tracciamento AI per la gestione degli stock in tempo reale.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> -45% Costi operativi
+                        </li>
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> +30% Efficienza spedizioni
+                        </li>
+</ul>
+</div>
+<!-- Project 2 -->
+<div class="custom-card anim anim-delay-2">
+<div class="h-1 w-12 bg-primary mb-6"></div>
+<div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">Agenzia Immobiliare</div>
+<h3 class="text-xl font-bold text-on-surface mb-4">Gestione Clienti Automatizzata</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Sistema CRM automatizzato per la gestione di contatti, appuntamenti e follow-up con i potenziali acquirenti.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> +200% Lead qualificati
+                        </li>
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> -70% Tempo gestione contatti
+                        </li>
+</ul>
+</div>
+<!-- Project 3 -->
+<div class="custom-card anim anim-delay-3">
+<div class="h-1 w-12 bg-primary mb-6"></div>
+<div class="text-[10px] font-bold text-primary uppercase tracking-widest mb-2">E-commerce &amp; Retail</div>
+<h3 class="text-xl font-bold text-on-surface mb-4">Customer Care AI</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Integrazione di agenti conversazionali intelligenti per il supporto clienti H24 multilingua.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> +120% Conversion rate
+                        </li>
+<li class="flex items-center gap-3 text-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-green-500 text-base">trending_up</span> -60% Ticket aperti
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section - hidden -->
+<section class="section section--alt anim" id="testimonials" style="display:none">
+<div class="container">
+<div class="flex flex-col gap-4 mb-16 anim">
+<h2 class="tracking-tight">Cosa dicono i <span class="gradient-text">nostri clienti</span></h2>
+<p class="text-lg text-on-surface-variant max-w-2xl">La fiducia delle aziende che hanno scelto di evolversi con noi.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="custom-card anim anim-delay-1">
+<div class="flex flex-col h-full gap-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="material-symbols-outlined text-primary/10 text-4xl leading-none">format_quote</span>
+</div>
+<p class="text-sm text-on-surface-variant flex-grow italic leading-relaxed">
+                            "TEKWORN ha trasformato completamente la gestione del nostro ristorante. Le automazioni ci fanno risparmiare ore ogni giorno."
+                        </p>
+<div class="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm">MF</div>
+<div>
+<div class="font-bold text-on-surface text-sm">Marco Ferretti</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">CEO, Ferretti Group</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="custom-card anim anim-delay-2">
+<div class="flex flex-col h-full gap-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="material-symbols-outlined text-primary/10 text-4xl leading-none">format_quote</span>
+</div>
+<p class="text-sm text-on-surface-variant flex-grow italic leading-relaxed">
+                            "Professionalità incredibile. Il software gestionale su misura ha rivoluzionato il modo in cui gestiamo i clienti."
+                        </p>
+<div class="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm">GM</div>
+<div>
+<div class="font-bold text-on-surface text-sm">Giulia Mancini</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">Fondatrice, Studio GM</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="custom-card anim anim-delay-3">
+<div class="flex flex-col h-full gap-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="material-symbols-outlined text-primary/10 text-4xl leading-none">format_quote</span>
+</div>
+<p class="text-sm text-on-surface-variant flex-grow italic leading-relaxed">
+                            "Il sistema di automazione ordini ha eliminato praticamente tutti gli errori manuali. Risultati eccezionali."
+                        </p>
+<div class="flex items-center gap-4 pt-6 border-t border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2563EB] to-[#06B6D4] flex items-center justify-center text-white font-bold text-sm">AR</div>
+<div>
+<div class="font-bold text-on-surface text-sm">Andrea Russo</div>
+<div class="text-[10px] text-on-surface-variant uppercase font-bold">Direttore, Logistica Sud</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner Section -->
+<section class="section bg-white anim">
+<div class="container">
+<div class="anim relative overflow-hidden bg-[#2563EB] rounded-3xl p-8 md:p-16 text-center cta-grid">
+<!-- Content -->
+<div class="relative z-10 flex flex-col items-center gap-6 max-w-3xl mx-auto">
+<div class="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 text-white text-xs font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> Inizia oggi
+                    </div>
+<h2 class="text-white leading-tight">Pronto a trasformare il tuo business?</h2>
+<p class="text-lg text-white/70">Scopri come le nostre automazioni possono far crescere la tua azienda. Prenota una consulenza gratuita.</p>
+<div class="flex flex-wrap justify-center gap-4 mt-4">
+<a class="btn bg-white text-primary py-4 px-8 text-base font-semibold !rounded-xl hover:bg-white/90" href="#contatti">
+                            Consulenza gratuita <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="btn border border-white/40 text-white py-4 px-8 text-base font-semibold !rounded-xl hover:bg-white/10" href="#servizi">Esplora i servizi</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sezione Contatti -->
+<section class="section section--alt anim" id="contatti">
+<div class="container">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-start">
+<!-- Left Column -->
+<div class="flex flex-col gap-stack-md anim">
+<div class="flex items-center gap-2 bg-primary/5 text-primary w-fit px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/10">
+<span class="material-symbols-outlined text-sm">mail</span> Contattaci
+                    </div>
+<h2 class="tracking-tight leading-tight">Inizia con una <span class="gradient-text">consulenza gratuita</span></h2>
+<p class="text-lg text-on-surface-variant max-w-lg">Raccontaci il tuo progetto e scopri come possiamo aiutarti ad automatizzare il tuo business. Nessun impegno, solo soluzioni concrete.</p>
+<div class="flex flex-col gap-6 mt-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-outline-variant/30 shadow-sm">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<div class="text-base text-on-surface font-semibold">Patti (ME), Sicilia</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border border-outline-variant/30 shadow-sm">
+<span class="material-symbols-outlined text-primary">alternate_email</span>
+</div>
+<div class="text-base text-on-surface font-semibold underline decoration-primary/30">info@tekworn.it</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Form -->
+<!-- <div class="anim anim-delay-2">
+<div class="custom-card shadow-sm">
+<form action="#" class="flex flex-col gap-5" method="POST">
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="nome">Nome e Cognome</label>
+<input class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest" id="nome" name="nome" placeholder="Inserisci il tuo nome" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="email">Email</label>
+<input class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest" id="email" name="email" placeholder="latua@email.it" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="messaggio">Messaggio</label>
+<textarea class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest min-h-[120px]" id="messaggio" name="messaggio" placeholder="Come possiamo aiutarti?" required=""></textarea>
+</div>
+<button class="btn btn--primary py-4 px-8 text-base font-bold !rounded-xl w-full" type="submit">
+                                Richiedi consulenza gratuita <span class="material-symbols-outlined text-sm">send</span>
+</button>
 </form>
 </div>
+</div>
+</div>
+</div>
+</section> -->
+<!-- Right Column: Form -->
+<div class="anim anim-delay-2">
+  <div class="custom-card shadow-sm">
+
+    <form id="contactForm" class="flex flex-col gap-5">
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="nome">
+          Nome e Cognome
+        </label>
+        <input
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+          id="nome"
+          name="nome"
+          type="text"
+          placeholder="Inserisci il tuo nome"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="email">
+          Email
+        </label>
+        <input
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+          id="email"
+          name="email"
+          type="email"
+          placeholder="latua@email.it"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="telefono">
+          Numero di telefono
+        </label>
+        <input
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+          id="telefono"
+          name="telefono"
+          type="tel"
+          placeholder="+39 000 000 0000"
+          required
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="servizio">
+            Servizio richiesto
+        </label>
+
+        <select
+            class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest"
+            id="servizio"
+            name="servizio"
+            required
+        >
+            <option value="" disabled selected>Seleziona un servizio</option>
+            <option value="Sito web">Sito web</option>
+            <option value="Software">Software</option>
+            <option value="Automazione">Automazione</option>
+        </select>
+       </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest" for="messaggio">
+          Messaggio
+        </label>
+        <textarea
+          class="w-full px-4 py-3 rounded-xl border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition-all text-sm bg-surface-container-lowest min-h-[120px]"
+          id="messaggio"
+          name="messaggio"
+          placeholder="Come possiamo aiutarti?"
+          required
+        ></textarea>
+      </div>
+
+      <button
+        class="btn btn--primary py-4 px-8 text-base font-bold !rounded-xl w-full"
+        type="submit"
+        id="form-submit-btn"
+      >
+        Richiedi consulenza gratuita
+        <span class="material-symbols-outlined text-sm">send</span>
+      </button>
+
+    </form>
+
+    <!-- Feedback post-invio -->
+    <div id="form-feedback" style="display:none;" class="flex flex-col items-center gap-5 py-10 text-center">
+      <div id="feedback-icon-wrap" class="w-16 h-16 rounded-full flex items-center justify-center"></div>
+      <div>
+        <h3 id="feedback-title" class="text-xl font-bold mb-2"></h3>
+        <p id="feedback-msg" class="text-sm text-on-surface-variant leading-relaxed max-w-xs mx-auto"></p>
+      </div>
+      <button type="button" id="feedback-reset" class="btn btn--outline gap-2 mt-1">
+        <span class="material-symbols-outlined text-sm">refresh</span>
+        Invia un altro messaggio
+      </button>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
 </section>
-<!-- END: Contact Section -->
-</main>
-<!-- BEGIN: Footer -->
-<footer class="bg-white text-brand-dark pt-20 pb-10 border-t border-slate-100">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid md:grid-cols-4 gap-12 mb-20">
-<div class="col-span-2 anim">
-<div class="flex flex-col gap-4 mb-6">
-<img alt="TEKWORN Large Logo" class="h-24 w-auto object-contain self-start" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbeOFMUXrl1iVds1v7iTVfzP_s_p5CwNzk-kntFKJHX2191kVaH1yEM1Jhmn628bFdJyGz8W-_37syTfldDmFonQpSUICnZQ1Y2G-cH1OVnoHUDygXHNleoIlfQSFMDgV_JW0zmPiWMAYhh69nWkPIOvek0NXT4mAQxYK4E9aJczTItfKiDNEVomHxjv0TXQmohCQPjDUhzsWBVQlM9jf9mUsYWdX_52IG5DAdM7gw3GcMMrx0w1ugyxjbZ1WDWoSdHszUcmnl5w8l"/>
+<!-- Footer -->
+<footer class="w-full bg-white border-t border-[#E2E8F0] pt-16 pb-8">
+<div class="container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+<!-- Column 1: Brand -->
+<div class="md:col-span-2 flex flex-col gap-6">
+<img alt="TEKWORN Logo" class="h-10 w-auto self-start" src="/img/transparent_logo_copia.png"/>
+<p class="text-sm text-[#64748B] max-w-sm leading-relaxed">Partner tecnologico per automazioni aziendali, sviluppo software e soluzioni digitali su misura.</p>
+<div class="flex items-center gap-2 text-sm text-[#64748B]">
+<span class="material-symbols-outlined text-[#06B6D4] text-lg">location_on</span>
+<span class="">Da Patti, Sicilia → Tutta Italia</span>
 </div>
-<p class="text-slate-500 max-w-sm">Leader del settore nell'automazione tecnica, colmiamo il divario tra l'eredità hardware e il futuro del software.</p>
 </div>
-<div class="anim delay-100">
-<h4 class="font-bold mb-6 text-brand-dark">Navigazione</h4>
-<ul class="space-y-4 text-sm text-slate-500">
-<li><a class="hover:text-brand-primary transition-colors" href="#about">Origini</a></li>
-<li><a class="hover:text-brand-primary transition-colors" href="#services">Servizi</a></li>
-<li><a class="hover:text-brand-primary transition-colors" href="#results">Metriche</a></li>
-<li><a class="hover:text-brand-primary transition-colors" href="#">Carriere</a></li>
+<!-- Column 2: Navigation -->
+<div class="flex flex-col gap-6">
+<h4 class="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">Navigazione</h4>
+<nav class="flex flex-col gap-3">
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#home">Home</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#chi-siamo">Chi siamo</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#servizi">Servizi</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#progetti">Progetti</a>
+<a class="text-sm text-[#64748B] hover:text-[#0F172A] transition-colors" href="#contatti">Contatti</a>
+</nav>
+</div>
+<!-- Column 3: Services -->
+<div class="flex flex-col gap-6">
+<h4 class="text-xs font-bold uppercase tracking-wider text-[#94A3B8]">Servizi</h4>
+<ul class="flex flex-col gap-3">
+<li class="text-sm text-[#64748B]">Automazioni Aziendali</li>
+<li class="text-sm text-[#64748B]">Siti Web Professionali</li>
+<li class="text-sm text-[#64748B]">Web App Personalizzate</li>
+<li class="text-sm text-[#64748B]">Software Gestionali</li>
 </ul>
 </div>
-<div class="anim delay-200">
-<h4 class="font-bold mb-6 text-brand-dark">Legale</h4>
-<ul class="space-y-4 text-sm text-slate-500">
-<li><a class="hover:text-brand-primary transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-brand-primary transition-colors" href="#">Termini di Servizio</a></li>
-<li><a class="hover:text-brand-primary transition-colors" href="#">Audit di Sicurezza</a></li>
-</ul>
 </div>
-</div>
-<div class="border-t border-slate-100 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest anim delay-300">
-<p>© 2023 TEKWORN Technical Systems. Tutti i diritti riservati.</p>
-<div class="flex gap-8">
-<a class="hover:text-brand-primary transition-colors" href="#">LinkedIn</a>
-<a class="hover:text-brand-primary transition-colors" href="#">GitHub</a>
-<a class="hover:text-brand-primary transition-colors" href="#">Twitter</a>
-</div>
+<!-- Bottom Bar -->
+<div class="pt-8 border-t border-[#E2E8F0] flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-xs text-[#94A3B8]">© 2024 TEKWORN. Tutti i diritti riservati.</div>
+<div class="text-xs text-[#94A3B8] font-medium">Automazioni · Sviluppo Software · Innovazione Digitale</div>
 </div>
 </div>
 </footer>
-<!-- END: Footer -->
-<!-- BEGIN: Scripts -->
-<script data-purpose="preload-animation">
-    window.addEventListener('load', () => {
-        document.body.classList.remove('overflow-hidden');
-    });
-</script>
-<script data-purpose="scroll-animations">
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.getElementById('main-nav');
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
+            // Nav background on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    nav.classList.add('bg-white/80', 'border-b', 'border-[#E2E8F0]', 'shadow-sm');
+                    nav.classList.remove('bg-transparent');
+                } else {
+                    nav.classList.remove('bg-white/80', 'border-b', 'border-[#E2E8F0]', 'shadow-sm');
+                    nav.classList.add('bg-transparent');
+                }
+            });
 
-    document.querySelectorAll('.anim').forEach(el => {
-      observer.observe(el);
-    });
-</script>
-<script data-purpose="form-submission">
-    const form = document.getElementById('contactForm');
-    const feedback = document.getElementById('formFeedback');
-    const btn = document.getElementById('submitBtn');
+            // Mobile menu toggle
+            const toggleMenu = () => {
+                const isOpen = !mobileMenu.classList.contains('closed');
+                if (isOpen) {
+                    mobileMenu.classList.add('closed');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileMenu.classList.remove('closed');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            };
 
-    if (form) {
-      form.addEventListener('submit', async (e) => {
+            menuToggle.addEventListener('click', toggleMenu);
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('closed');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Scroll Animation Observer
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, { rootMargin: '-100px' });
+
+            document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+        });
+
+        // Hero parallax/float effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const amount = 20;
+            const x = (e.clientX / window.innerWidth - 0.5) * amount;
+            const y = (e.clientY / window.innerHeight - 0.5) * amount;
+            const dashboard = document.querySelector('.floating');
+            if(dashboard) {
+                dashboard.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+    </script>
+    <script>
+    document
+    .getElementById("contactForm")
+    .addEventListener("submit", async (e) => {
+
         e.preventDefault();
-        
-        const originalBtnText = btn.innerText;
-        btn.innerText = 'TRASMISSIONE IN CORSO...';
-        btn.disabled = true;
-        feedback.classList.add('hidden');
 
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
+        const btn = document.getElementById("form-submit-btn");
+        const form = document.getElementById("contactForm");
+        const feedback = document.getElementById("form-feedback");
+        const iconWrap = document.getElementById("feedback-icon-wrap");
+        const title = document.getElementById("feedback-title");
+        const msg = document.getElementById("feedback-msg");
+        const resetBtn = document.getElementById("feedback-reset");
+
+        btn.disabled = true;
+        btn.textContent = "Invio in corso…";
+
+        const payload = {
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        telefono: document.getElementById("telefono").value,
+        messaggio: document.getElementById("messaggio").value,
+        servizio: document.getElementById("servizio").value
+        };
+
+        const showFeedback = (success) => {
+            form.style.display = "none";
+            feedback.style.display = "flex";
+            if (success) {
+                iconWrap.style.cssText = "width:4rem;height:4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;background:#DCFCE7;";
+                iconWrap.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
+                title.textContent = "Messaggio inviato!";
+                title.style.color = "#16A34A";
+                msg.textContent = "Grazie per averci contattato. Ti risponderemo entro 24 ore all'indirizzo email indicato.";
+            } else {
+                iconWrap.style.cssText = "width:4rem;height:4rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;background:#FEE2E2;";
+                iconWrap.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+                title.textContent = "Errore nell'invio";
+                title.style.color = "#DC2626";
+                msg.textContent = "Si è verificato un problema. Riprova oppure scrivici direttamente a info@tekworn.it";
+            }
+        };
+
+        resetBtn.addEventListener("click", () => {
+            form.reset();
+            form.style.display = "flex";
+            feedback.style.display = "none";
+            btn.disabled = false;
+            btn.innerHTML = 'Richiedi consulenza gratuita <span class="material-symbols-outlined text-sm">send</span>';
+        }, { once: true });
 
         try {
-          // Simulated API endpoint for submission
-          const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
 
-          if (response.ok) {
-            feedback.innerText = 'TRASMISSIONE COMPLETATA CON SUCCESSO';
-            feedback.classList.remove('hidden', 'text-red-500', 'bg-red-100');
-            feedback.classList.add('text-green-600', 'bg-green-100');
-            form.reset();
-          } else {
-            throw new Error('Errore nella trasmissione');
-          }
-        } catch (err) {
-          feedback.innerText = 'ERRORE NELLA TRASMISSIONE. RIPROVARE.';
-          feedback.classList.remove('hidden', 'text-green-600', 'bg-green-100');
-          feedback.classList.add('text-red-500', 'bg-red-100');
-        } finally {
-          btn.innerText = originalBtnText;
-          btn.disabled = false;
+        const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+        showFeedback(result.success);
+
+        } catch (error) {
+        showFeedback(false);
         }
-      });
-    }
-</script>
-<!-- END: Scripts -->
+
+    });
+    </script>
+    <script>
+    // Preload Animation
+    (function() {
+        const overlay = document.getElementById('preload-overlay');
+        if (!overlay) return;
+
+        if (sessionStorage.getItem('tekworn_preloaded')) {
+            overlay.style.display = 'none';
+            return;
+        }
+
+        const STRING_START = 'NETWORK';
+        const STRING_END   = 'TEKWORN';
+        const TOTAL_CHARS  = 7;
+        const SCAN_DURATION = 2000;
+
+        const lettersContainer = document.getElementById('preload-letters');
+        const scanner   = document.getElementById('preload-scanner');
+        const statusTxt = document.getElementById('preload-status-text');
+        const label     = document.getElementById('preload-label');
+
+        const cellSize = window.innerWidth >= 768 ? '5rem' : window.innerWidth >= 640 ? '4rem' : '3rem';
+        const fontSize = window.innerWidth >= 768 ? '3rem' : window.innerWidth >= 640 ? '2.25rem' : '1.75rem';
+
+        STRING_START.split('').forEach(function(char, i) {
+            var cell = document.createElement('div');
+            cell.className = 'preload-letter-cell';
+            cell.style.cssText = 'position:relative;display:flex;align-items:center;justify-content:center;border:1px solid #E2E8F0;width:' + cellSize + ';height:calc(' + cellSize + ' * 1.3);';
+            cell.id = 'pl-cell-' + i;
+            var span = document.createElement('span');
+            span.style.cssText = 'font-family:Inter,sans-serif;font-weight:900;font-size:' + fontSize + ';color:#0F172A;z-index:1;';
+            span.textContent = char;
+            span.id = 'pl-char-' + i;
+            cell.appendChild(span);
+            lettersContainer.appendChild(cell);
+        });
+
+        setTimeout(function() {
+            label.style.opacity = '1';
+            label.style.transform = 'translateY(0)';
+        }, 100);
+
+        var state = { phase: 'idle', startTime: null, scanProgress: -10, transformed: Array(TOTAL_CHARS).fill(false), logoShown: false };
+
+        setTimeout(function() {
+            state.phase = 'scanning';
+            requestAnimationFrame(tick);
+        }, 800);
+
+        function tick(ts) {
+            if (state.phase === 'idle') return;
+            if (!state.startTime) state.startTime = ts;
+            var elapsed = ts - state.startTime;
+
+            if (state.phase === 'scanning') {
+                state.scanProgress = Math.min(110, (elapsed / SCAN_DURATION) * 120 - 10);
+                scanner.style.left = state.scanProgress + '%';
+                scanner.style.opacity = '1';
+                statusTxt.textContent = 'Scanning';
+
+                for (var i = 0; i < TOTAL_CHARS; i++) {
+                    var pos = (i / (TOTAL_CHARS - 1)) * 100;
+                    var cell = document.getElementById('pl-cell-' + i);
+                    var charEl = document.getElementById('pl-char-' + i);
+                    if (state.scanProgress >= pos && !state.transformed[i]) {
+                        state.transformed[i] = true;
+                        var glitch = document.createElement('span');
+                        glitch.className = 'preload-glitch';
+                        glitch.style.cssText = 'font-family:Inter,sans-serif;font-weight:900;font-size:' + fontSize + ';';
+                        glitch.textContent = charEl.textContent;
+                        cell.appendChild(glitch);
+                        charEl.textContent = STRING_END[i];
+                        setTimeout(function(g){ g.remove(); }, 400, glitch);
+                    }
+                    var dist = Math.abs(state.scanProgress - pos);
+                    if (dist < 15) {
+                        cell.style.borderColor = 'hsla(190,100%,50%,0.3)';
+                        cell.style.backgroundColor = 'hsla(190,100%,50%,0.05)';
+                    } else if (state.transformed[i]) {
+                        cell.style.borderColor = 'hsla(190,100%,50%,0.4)';
+                        cell.style.backgroundColor = 'hsla(190,100%,50%,0.05)';
+                    }
+                }
+                if (elapsed >= SCAN_DURATION) {
+                    state.phase = 'hold';
+                    state.startTime = ts;
+                }
+            }
+
+            if (state.phase === 'hold') {
+                scanner.style.opacity = '0';
+                statusTxt.textContent = 'System Ready';
+                if (ts - state.startTime > 800 && !state.logoShown) {
+                    state.logoShown = true;
+                    // Mostra lo schermo logo
+                    var logoScreen = document.getElementById('preload-logo-screen');
+                    var label = document.getElementById('preload-label');
+                    var lettersWrap = document.getElementById('preload-letters');
+                    var statusEl = document.getElementById('preload-status-text');
+                    [label, lettersWrap, statusEl].forEach(function(el) {
+                        if (el) { el.style.transition = 'opacity 0.3s ease'; el.style.opacity = '0'; }
+                    });
+                    if (logoScreen) {
+                        setTimeout(function() {
+                            logoScreen.style.opacity = '1';
+                            logoScreen.style.pointerEvents = 'auto';
+                            setTimeout(function() {
+                                overlay.classList.add('preload-fade-out');
+                                sessionStorage.setItem('tekworn_preloaded', '1');
+                                setTimeout(function() { overlay.style.display = 'none'; }, 800);
+                            }, 1200);
+                        }, 300);
+                    }
+                    return;
+                }
+                if (state.logoShown) return;
+            }
+
+            requestAnimationFrame(tick);
+        }
+    })();
+    </script>
 </body></html>

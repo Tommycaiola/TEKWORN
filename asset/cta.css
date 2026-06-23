@@ -1,0 +1,235 @@
+/* ==============================================
+   TEKWORN — Deploy CTA  |  Custom styles & keyframes
+   ============================================== */
+
+:root {
+  --white: #ffffff;
+  --green: #10b981;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ===== Background decorations ===== */
+
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.glow-orb {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+@media (min-width: 640px) { .glow-orb { width: 384px; height: 384px; } }
+
+@keyframes glowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.4; }
+  50%      { transform: translate(-50%, -50%) scale(1.3); opacity: 0.7; }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent);
+  pointer-events: none;
+  top: 0;
+  animation: scanMove 2s linear infinite;
+}
+@keyframes scanMove {
+  0%   { top: 0%; }
+  100% { top: 100%; }
+}
+.scan-line.hidden { display: none; }
+
+/* ===== Terminal ===== */
+
+.terminal-lines .line {
+  color: rgba(16, 185, 129, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: lineIn 0.25s ease-out forwards;
+}
+@keyframes lineIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== Stage ===== */
+
+.stage-item {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+}
+
+/* --- Word container: fixed width so the cursor stays put --- */
+.word-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+}
+@media (min-width: 640px) { .word-container { min-width: 460px; } }
+@media (min-width: 768px) { .word-container { min-width: 620px; } }
+
+.word {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  text-transform: uppercase;
+  user-select: none;
+  line-height: 1;
+}
+@media (min-width: 640px) { .word { font-size: 72px; } }
+@media (min-width: 768px) { .word { font-size: 96px; } }
+
+/* Cursor: absolutely positioned at the right edge — never shifts the word */
+.cursor {
+  position: absolute;
+  right: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  animation: blink 0.6s steps(2) infinite;
+}
+@media (min-width: 640px) { .cursor { font-size: 72px; } }
+@media (min-width: 768px) { .cursor { font-size: 96px; } }
+
+@keyframes blink {
+  0%, 50%   { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* --- Tagline --- */
+.tagline-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.deploy-success {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  color: var(--green);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+}
+@media (min-width: 640px) { .deploy-success { font-size: 14px; } }
+
+.tagline {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--white);
+  user-select: none;
+  line-height: 1.1;
+  text-transform: uppercase;          /* ← SOLUZIONI SU MISURA */
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+}
+@media (min-width: 640px) { .tagline { font-size: 60px; } }
+@media (min-width: 768px) { .tagline { font-size: 72px; } }
+
+/* --- Logo --- */
+.logo-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo-img {
+  height: 112px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.6);
+  filter: blur(20px);
+}
+@media (min-width: 640px) { .logo-img { height: 160px; } }
+@media (min-width: 768px) { .logo-img { height: 208px; } }
+
+.logo-line {
+  height: 1px;
+  width: 96px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: scaleX(0);
+  opacity: 0;
+}
+@media (min-width: 640px) { .logo-line { width: 128px; } }
+
+.logo-subtitle {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.025em;
+  opacity: 0;
+}
+@media (min-width: 640px) { .logo-subtitle { font-size: 16px; } }
+
+/* ===== Progress bar fill ===== */
+.progress-fill {
+  width: 0%;
+  background: linear-gradient(90deg, var(--green), var(--blue), var(--purple));
+  transition: width 0.6s ease-out;
+}
+
+/* ===== Animation utility classes ===== */
+
+.anim-word-in  { animation: wordIn  0.55s var(--ease) forwards; }
+.anim-word-out { animation: wordOut 0.45s var(--ease) forwards; }
+@keyframes wordIn {
+  from { opacity: 0; transform: scale(0.7);  filter: blur(16px); }
+  to   { opacity: 1; transform: scale(1);    filter: blur(0); }
+}
+@keyframes wordOut {
+  from { opacity: 1; transform: scale(1);    filter: blur(0); }
+  to   { opacity: 0; transform: scale(1.15); filter: blur(12px); }
+}
+
+.anim-tagline-success { animation: fadeUp      0.5s ease-out      0.2s forwards; }
+.anim-tagline-title   { animation: fadeUpLong  0.7s var(--ease)   0.5s forwards; }
+@keyframes fadeUp      { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUpLong  { to { opacity: 1; transform: translateY(0); } }
+
+.anim-logo-in       { animation: logoIn   1s   var(--ease)        forwards; }
+.anim-logo-line     { animation: scaleXIn 0.8s var(--ease) 0.6s  forwards; }
+.anim-logo-subtitle { animation: fadeIn   0.6s ease-out     1s    forwards; }
+@keyframes logoIn   { to { opacity: 1; transform: scale(1); filter: blur(0); } }
+@keyframes scaleXIn { to { transform: scaleX(1); opacity: 1; } }
+@keyframes fadeIn   { to { opacity: 1; } }
