@@ -1009,8 +1009,8 @@
         </section>
 
         <!-- BEGIN: Contact Section -->
-        <section class="py-24 bg-white relative overflow-hidden isolate" id="contact">
-            <!-- BACKGROUND IMAGE -->
+        <!-- <section class="py-24 bg-white relative overflow-hidden isolate" id="contact">
+            
             <div class="absolute inset-0 -z-10">
                 <img
                 src="https://i.pinimg.com/1200x/78/6d/8d/786d8d4a377dca5979cf4859e0c1ce73.jpg"
@@ -1141,131 +1141,168 @@
 
             </div>
 
-        </section>
+        </section> -->
         <!-- END: Contact Section -->
-        
-    </main>
-    
-    <!-- BEGIN: Footer -->
-    <!-- <footer class="bg-white text-brand-dark pt-20 pb-10 border-t border-slate-100">
+         <!-- BEGIN: Contact Section -->
+    <section class="py-24 bg-white relative overflow-hidden isolate" id="contact">
+        <!-- BACKGROUND IMAGE -->
+        <div class="absolute inset-0 -z-10">
+            <img
+                src="https://i.pinimg.com/1200x/78/6d/8d/786d8d4a377dca5979cf4859e0c1ce73.jpg"
+                class="w-full h-full object-cover opacity-10"
+                alt=""
+            />
+        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 anim">
 
-            <div class="grid md:grid-cols-4 gap-12 mb-20">
-
-                <div class="col-span-2 anim">
-
-                    <div class="flex flex-col gap-4 mb-6">
-
-                        <img
-                            alt="TEKWORN Large Logo"
-                            class="h-24 w-auto object-contain self-start"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbeOFMUXrl1iVds1v7iTVfzP_s_p5CwNzk-kntFKJHX2191kVaH1yEM1Jhmn628bFdJyGz8W-_37syTfldDmFonQpSUICnZQ1Y2G-cH1OVnoHUDygXHNleoIlfQSFMDgV_JW0zmPiWMAYhh69nWkPIOvek0NXT4mAQxYK4E9aJczTItfKiDNEVomHxjv0TXQmohCQPjDUhzsWBVQlM9jf9mUsYWdX_52IG5DAdM7gw3GcMMrx0w1ugyxjbZ1WDWoSdHszUcmnl5w8l"
-                        />
-
-                    </div>
-
-                    <p class="text-slate-500 max-w-sm">
-                        Leader del settore nell'automazione tecnica, colmiamo il divario tra l'eredità hardware e il futuro del software.
-                    </p>
-
-                </div>
-
-                <div class="anim delay-100">
-
-                    <h4 class="font-bold mb-6 text-brand-dark">
-                        Navigazione
-                    </h4>
-
-                    <ul class="space-y-4 text-sm text-slate-500">
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#about">
-                                Origini
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#services">
-                                Servizi
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#results">
-                                Metriche
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#">
-                                Carriere
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <div class="anim delay-200">
-
-                    <h4 class="font-bold mb-6 text-brand-dark">
-                        Legale
-                    </h4>
-
-                    <ul class="space-y-4 text-sm text-slate-500">
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#">
-                                Privacy Policy
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#">
-                                Termini di Servizio
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="hover:text-brand-primary transition-colors" href="#">
-                                Audit di Sicurezza
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold mb-4">
+                    Mettiti in Contatto
+                </h2>
+                <p class="text-slate-500">
+                    Inizia oggi la tua trasformazione tecnica.
+                </p>
             </div>
 
-            <div class="border-t border-slate-100 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400 uppercase tracking-widest anim delay-300">
+            <form class="space-y-6" data-purpose="contact-form" id="contactForm">
 
-                <p>
-                    © 2023 TEKWORN Technical Systems. Tutti i diritti riservati.
-                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                <div class="flex gap-8">
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold uppercase text-slate-400">
+                            Nome e Cognome
+                        </label>
+                        <input
+                            class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all"
+                            name="nome"
+                            placeholder="Mario Rossi"
+                            required
+                            type="text"
+                        />
+                    </div>
 
-                    <a class="hover:text-brand-primary transition-colors" href="#">
-                        LinkedIn
-                    </a>
-
-                    <a class="hover:text-brand-primary transition-colors" href="#">
-                        GitHub
-                    </a>
-
-                    <a class="hover:text-brand-primary transition-colors" href="#">
-                        Twitter
-                    </a>
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold uppercase text-slate-400">
+                            Email Aziendale
+                        </label>
+                        <input
+                            class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all"
+                            name="email"
+                            placeholder="mario@azienda.it"
+                            required
+                            type="email"
+                        />
+                    </div>
 
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold uppercase text-slate-400">
+                            Telefono
+                        </label>
+                        <input
+                            class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all"
+                            name="telefono"
+                            placeholder="+39 012 3456789"
+                            type="tel"
+                        />
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold uppercase text-slate-400">
+                            Servizio d'Interesse
+                        </label>
+                        <select
+                            class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all"
+                            name="servizio"
+                        >
+                            <option value="automazione">Automazioni Aziendali</option>
+                            <option value="siti-web">Siti Web Professionali</option>
+                            <option value="web-app">Web App Personalizzate</option>
+                            <option value="consulenza">Consulenza Strategica</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-xs font-bold uppercase text-slate-400">
+                        Messaggio
+                    </label>
+                    <textarea
+                        class="w-full bg-slate-50 border-slate-200 rounded-custom p-4 focus:ring-brand-primary focus:border-brand-primary transition-all"
+                        name="messaggio"
+                        placeholder="Come possiamo aiutare il tuo workflow?"
+                        required
+                        rows="4"
+                    ></textarea>
+                </div>
+
+                <button
+                    class="w-full py-4 bg-brand-dark text-white font-bold rounded-custom hover:bg-brand-primary transition-all shadow-xl"
+                    id="submitBtn"
+                    type="submit"
+                >
+                    Trasmetti Richiesta
+                </button>
+
+            </form>
+
+            <!-- FEEDBACK MODERNO -->
+            <div
+                id="formFeedback"
+                class="hidden flex flex-col items-center gap-5 py-12 text-center"
+            >
+
+                <!-- Icon -->
+                <div
+                    id="feedbackIconWrap"
+                    class="w-16 h-16 rounded-full flex items-center justify-center bg-green-100 text-green-600"
+                >
+                    <span class="material-symbols-outlined text-2xl">
+                        check_circle
+                    </span>
+                </div>
+
+                <!-- Testo -->
+                <div>
+                    <h3
+                        id="feedbackTitle"
+                        class="text-xl font-bold mb-2 text-slate-900"
+                    >
+                        Messaggio inviato!
+                    </h3>
+
+                    <p
+                        id="feedbackMsg"
+                        class="text-sm text-slate-500 leading-relaxed max-w-xs mx-auto"
+                    >
+                        Ti risponderemo il prima possibile.
+                    </p>
+                </div>
+
+                <!-- Reset -->
+                <button
+                    type="button"
+                    id="feedbackReset"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-custom border border-slate-200 text-slate-700 hover:bg-slate-50 transition-all"
+                >
+                    <span class="material-symbols-outlined text-sm">refresh</span>
+                    Invia un altro messaggio
+                </button>
 
             </div>
 
         </div>
-
-    </footer> -->
+    </section>
+    <!-- END: Contact Section -->
+        
+    </main>
+    
+    
     <!-- Footer -->
     <footer class="w-full bg-white border-t border-[#E2E8F0] pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1346,7 +1383,7 @@
     <!-- END: Footer -->
    
         <!-- BEGIN: Scripts -->
-        <script data-purpose="preload-animation">
+         <script data-purpose="preload-animation">
             window.addEventListener('load', () => {
                 document.body.classList.remove('overflow-hidden');
             });
@@ -1369,6 +1406,7 @@
             observer.observe(el);
             });
         </script>
+        <!-- 
         <script data-purpose="form-submission">
             const form = document.getElementById('contactForm');
             const feedback = document.getElementById('formFeedback');
@@ -1412,6 +1450,79 @@
                 }
             });
             }
+        </script> -->
+        <script data-purpose="form-submission">
+            document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const form = document.getElementById('contactForm');
+                const feedback = document.getElementById('formFeedback');
+                const btn = document.getElementById('submitBtn');
+
+                const title = document.getElementById('feedbackTitle');
+                const msg = document.getElementById('feedbackMsg');
+                const iconWrap = document.getElementById('feedbackIconWrap');
+                const resetBtn = document.getElementById('feedbackReset');
+
+                const originalBtnText = btn.innerText;
+
+                // UI loading state
+                btn.innerText = 'TRASMISSIONE IN CORSO...';
+                btn.disabled = true;
+
+                feedback.classList.add('hidden');
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                const showFeedback = (success) => {
+                    form.classList.add('hidden');
+                    feedback.classList.remove('hidden');
+
+                    if (success) {
+                        iconWrap.className = "w-16 h-16 rounded-full flex items-center justify-center bg-green-100 text-green-600";
+                        iconWrap.innerHTML = `<span class="material-symbols-outlined text-2xl">check_circle</span>`;
+
+                        title.textContent = "Messaggio inviato!";
+                        msg.textContent = "Ti risponderemo entro 24 ore all'indirizzo email indicato.";
+                    } else {
+                        iconWrap.className = "w-16 h-16 rounded-full flex items-center justify-center bg-red-100 text-red-600";
+                        iconWrap.innerHTML = `<span class="material-symbols-outlined text-2xl">error</span>`;
+
+                        title.textContent = "Errore nell'invio";
+                        msg.textContent = "Si è verificato un problema. Riprova oppure scrivici direttamente.";
+                    }
+                };
+
+                try {
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        form.reset();
+                        showFeedback(true);
+                    } else {
+                        showFeedback(false);
+                    }
+
+                } catch (err) {
+                    showFeedback(false);
+                } finally {
+                    btn.innerText = originalBtnText;
+                    btn.disabled = false;
+                }
+
+                // Reset form
+                resetBtn?.addEventListener('click', () => {
+                    form.classList.remove('hidden');
+                    feedback.classList.add('hidden');
+                    form.reset();
+                }, { once: true });
+
+            });
         </script>
     <!-- END: Scripts -->
     </body>
