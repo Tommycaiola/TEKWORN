@@ -724,89 +724,113 @@
         </section>
         <!-- END: Concrete Examples -->
 
-
         <!-- BEGIN: Measurable Results -->
-        <section class="py-24 bg-brand-dark relative overflow-hidden isolate" id="results">
-            <div class="absolute inset-0 opacity-10 pointer-events-none"
-                style="background-image: linear-gradient(#004ac6 1px, transparent 1px),
-                        linear-gradient(90deg, #004ac6 1px, transparent 1px);
-                        background-size: 50px 50px;">
+        <section class="py-24 bg-white relative overflow-hidden isolate" id="results">
+
+            <!-- BACKGROUND IMAGE -->
+            <div class="absolute inset-0 -z-10">
+                <img
+                src="https://i.pinimg.com/1200x/62/c2/6b/62c26bcd4651802cd51cf0c7bf433734.jpg"
+                class="w-full h-full object-cover opacity-50"
+                alt=""
+                />
             </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <h2 class="text-3xl font-extrabold text-center mb-16 anim">
+                <h2 class="text-3xl font-extrabold text-center mb-16 text-slate-900 anim">
                     Risultati Misurabili
                 </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                    <div class="anim text-center p-8 bg-slate-50 rounded-3xl">
+                    <!-- CARD 1 -->
+                    <div class="custom-card anim anim-delay-1 bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-lg transition">
 
-                        <div class="text-brand-primary mb-4">
-                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                                <path
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                ></path>
-                            </svg>
+                        <div class="h-1 w-12 bg-primary mb-6"></div>
+
+                        <div class="text-[10px] font-bold text-green-500 uppercase tracking-widest mb-2">
+                            Logistica & Supply Chain
                         </div>
 
-                        <div class="text-xl font-bold mb-2">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">
                             Ottimizzazione Magazzino
-                        </div>
+                        </h3>
 
-                        <p class="text-slate-500 text-sm">
-                            Riduzione degli sprechi del 25% tramite sistemi di tracciamento automatizzati.
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Implementazione di un sistema di tracciamento AI per la gestione degli stock in tempo reale.
                         </p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                                <span class="material-symbols-outlined text-green-500 text-base">trending_up</span>
+                                -45% Costi operativi
+                            </li>
+                            <li class="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                                <span class="material-symbols-outlined text-green-500 text-base">trending_up</span>
+                                +30% Efficienza spedizioni
+                            </li>
+                        </ul>
 
                     </div>
 
-                    <div class="anim delay-100 text-center p-8 bg-slate-50 rounded-3xl">
+                    <!-- CARD 2 -->
+                    <div class="custom-card anim anim-delay-2 bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-lg transition">
 
-                        <div class="text-brand-primary mb-4">
-                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                                <path
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                ></path>
-                            </svg>
+                        <div class="h-1 w-12 bg-primary mb-6"></div>
+
+                        <div class="text-[10px] font-bold text-green-500 uppercase tracking-widest mb-2">
+                            Agenzia Immobiliare
                         </div>
 
-                        <div class="text-xl font-bold mb-2">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">
                             Gestione Clienti Automatizzata
-                        </div>
+                        </h3>
 
-                        <p class="text-slate-500 text-sm">
-                            Oltre 10.000 interazioni gestite senza intervento umano diretto.
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Sistema CRM automatizzato per la gestione di contatti, appuntamenti e follow-up.
                         </p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                                <span class="material-symbols-outlined text-green-500 text-base">trending_up</span>
+                                +200% Lead qualificati
+                            </li>
+                            <li class="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                                <span class="material-symbols-outlined text-green-500 text-base">trending_up</span>
+                                -70% Tempo gestione contatti
+                            </li>
+                        </ul>
 
                     </div>
 
-                    <div class="anim delay-200 text-center p-8 bg-slate-50 rounded-3xl">
+                    <!-- CARD 3 -->
+                    <div class="custom-card anim anim-delay-3 bg-white border border-slate-200 rounded-3xl p-8 hover:shadow-lg transition">
 
-                        <div class="text-brand-primary mb-4">
-                            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                                <path
-                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                ></path>
-                            </svg>
+                        <div class="h-1 w-12 bg-primary mb-6"></div>
+
+                        <div class="text-[10px] font-bold text-green-500 uppercase tracking-widest mb-2">
+                            E-commerce & Retail
                         </div>
 
-                        <div class="text-xl font-bold mb-2">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">
                             Customer Care AI
-                        </div>
+                        </h3>
 
-                        <p class="text-slate-500 text-sm">
-                            Risposte immediate h24, aumentando il tasso di soddisfazione del 60%.
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Supporto clienti intelligente h24 con automazione conversazionale multilingua.
                         </p>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                                <span class="material-symbols-outlined text-green-500 text-base">trending_up</span>
+                                +120% Conversion rate
+                            </li>
+                            <li class="flex items-center gap-3 text-sm font-semibold text-slate-800">
+                                <span class="material-symbols-outlined text-green-500 text-base">trending_up</span>
+                                -60% Ticket aperti
+                            </li>
+                        </ul>
 
                     </div>
 
@@ -817,8 +841,9 @@
         </section>
         <!-- END: Measurable Results -->
         
+        
         <!-- BEGIN: Testimonials -->
-        <section class="py-24 bg-slate-50">
+        <!-- <section class="py-24 bg-slate-50">
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -889,67 +914,10 @@
 
             </div>
 
-        </section>
+        </section> -->
         <!-- END: Testimonials -->
 
         <!-- BEGIN: CTA Section -->
-        <!-- <section class="py-20 relative overflow-hidden bg-[#2563EB] cta-grid isolate">
-            <div class="absolute inset-0 -z-20">
-                <video
-                    class="w-full h-full object-cover"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata"
-                    fetchpriority="high"
-                >
-                    <source src="https://cdn.dribbble.com/userupload/16365364/file/original-dcc3ad4c0f5802c6670d36fcca720e5e.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-                <div class="rounded-3xl p-12 md:p-20 text-center bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl">
-
-                    <div class="anim">
-
-                        <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-white">
-                            Pronto a digitalizzare il tuo successo?
-                        </h2>
-
-                        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                            Unisciti alle aziende che hanno già ottimizzato i loro processi con TEKWORN. La nostra tecnologia è al servizio della tua crescita.
-                        </p>
-
-                        <a
-                            class="inline-flex items-center justify-center px-10 py-5 bg-white text-[#2563EB] font-bold rounded-custom hover:bg-blue-50 hover:scale-105 transition-all shadow-xl shadow-black/20"
-                            href="#contact"
-                        >
-                            Prenota una chiamata
-
-                            <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-                                <path
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                ></path>
-                            </svg>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-white/5 rounded-full blur-3xl -z-10"></div>
-
-        </section> -->
-        <!-- END: CTA Section -->
-         <!-- BEGIN: CTA Section -->
         <section class="py-24 relative overflow-hidden bg-[#2563EB] cta-grid isolate">
 
             <!-- Background video -->
@@ -1146,13 +1114,13 @@
          <!-- BEGIN: Contact Section -->
     <section class="py-24 bg-white relative overflow-hidden isolate" id="contact">
         <!-- BACKGROUND IMAGE -->
-        <div class="absolute inset-0 -z-10">
-            <img
-                src="https://i.pinimg.com/1200x/78/6d/8d/786d8d4a377dca5979cf4859e0c1ce73.jpg"
-                class="w-full h-full object-cover opacity-10"
+            <div class="absolute inset-0 -z-10">
+                <img
+                src="https://i.pinimg.com/1200x/62/c2/6b/62c26bcd4651802cd51cf0c7bf433734.jpg"
+                class="w-full h-full object-cover opacity-50"
                 alt=""
-            />
-        </div>
+                />
+            </div>
 
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 anim">
 
