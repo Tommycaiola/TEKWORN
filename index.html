@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com" rel="preconnect"/>
         <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+        <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
         <script>
             tailwind.config = {
             theme: {
@@ -156,9 +157,9 @@
     <main class="relative">
     
         <!-- BEGIN: Hero Section -->
-        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
 
-            <!--Video bg-->
+            
             <div class="absolute inset-0 -z-20">
                 <video
                     class="w-full h-full object-cover"
@@ -173,26 +174,11 @@
                 </video>
             </div>
 
-            <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+            
 
-            <script>
-                class ThreeJSScene extends HTMLElement {
-                    connectedCallback() {
-                        const container = this;
-                        const src = this.getAttribute('src');
+            
 
-                        if (src) {
-                            const scriptContent = src;
-                            const initScene = new Function('container', scriptContent);
-                            initScene(container);
-                        }
-                    }
-                }
-
-                customElements.define('threejs-scene', ThreeJSScene);
-            </script>
-
-            <!-- Background Animation Placeholder Integration -->
+            
             <div class="absolute inset-0 -z-10 opacity-30">
                 {{DATA:ANIMATION:ANIMATION_28}}
             </div>
@@ -304,6 +290,142 @@
 
             </div>
 
+        </section> -->
+        <!-- END: Hero Section -->
+        <!-- BEGIN: Hero Section -->
+        <section class="relative pt-20 pb-16 lg:pt-48 lg:pb-32 overflow-hidden overflow-x-hidden">
+            
+
+            <!-- Video bg -->
+            <div class="absolute inset-0 -z-20">
+                <video
+                    class="w-full h-full object-cover"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                    fetchpriority="high"
+                >
+                    <source src="/asset/video/herobg.webm" type="video/webm">
+                </video>
+            </div>
+
+            <div class="absolute inset-0 -z-10 opacity-30">
+                {{DATA:ANIMATION:ANIMATION_28}}
+            </div>
+
+            <!-- decorative blobs (più sicuri su mobile) -->
+            <div class="absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-brand-primary/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-brand-accent/5 rounded-full blur-3xl"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+                    <!-- LEFT CONTENT -->
+                    <div>
+
+                        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-brand-primary bg-brand-primary/10 rounded-full border border-brand-primary/20">
+                            SERVIZI SU MISURA PER TE
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                            <span class="gradient-text withspace-nowrap">Soluzioni digitali</span><br />
+                            che accelerano la crescita.
+                        </h1>
+
+                        <p class="text-base sm:text-lg lg:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
+                            TEKWORN aiuta aziende e professionisti a eliminare attività ripetitive con automazioni, software e sistemi digitali su misura.
+                        </p>
+
+                        <!-- buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                            <a
+                                class="w-full sm:w-auto px-6 sm:px-8 py-4 bg-brand-primary text-white text-center font-bold rounded-custom hover:shadow-2xl hover:scale-[1.02] transition-all"
+                                href="#contact"
+                            >
+                                Inizia Ora
+                            </a>
+
+                            <a
+                                class="w-full sm:w-auto px-6 sm:px-8 py-4 bg-white text-brand-dark text-center font-bold rounded-custom border border-slate-200 hover:bg-slate-50 transition-all"
+                                href="#about"
+                            >
+                                La Nostra Visione
+                            </a>
+                        </div>
+                        
+                        <!--STATS-->
+                        <div class="mt-10 grid grid-cols-3 gap-4 sm:flex sm:items-center sm:gap-8">
+
+                            <div class="text-center sm:text-left">
+                                <p class="text-lg sm:text-2xl font-black text-brand-dark leading-tight">Siti Web</p>
+                                <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase">Connetti</p>
+                            </div>
+
+                            <div class="hidden sm:block w-px h-8 bg-black/20"></div>
+
+                            <div class="text-center sm:text-left">
+                                <p class="text-lg sm:text-2xl font-black text-brand-dark leading-tight">Automazioni</p>
+                                <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase">Automatizza</p>
+                            </div>
+
+                            <div class="hidden sm:block w-px h-8 bg-black/20"></div>
+
+                            <div class="text-center sm:text-left">
+                                <p class="text-lg sm:text-2xl font-black text-brand-dark leading-tight">Software</p>
+                                <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase">Scala</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <!-- <div class="relative overflow-hidden">
+
+                        <div class="relative z-20 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                            <img
+                                alt="Technical Dashboard Preview"
+                                class="w-full h-auto object-contain"
+                                src="https://lh3.googleusercontent.com/aida/AP1WRLsUJnYXoFUbcWCyGffnLkV1JMGjBM2Aj2ArTysTbjH9nff7itSUQ1qK8dJuzCuiQXq_6pF7nZ2q8TwDrbQcrCJOimpBzCJvirXjAUluQFqNQG4KpLqd-1kx1Z7bho2CKndH0SDorUCwTGAJ79bbJzXmqNc_xOI98o5vP61zYyX4q5zqOBghEUhy1Xgm4uwWnb2f9OCK4yqrfVY0e7AuCDpN-NDVZ1s00kv1OuG8z1E863OessR6HJU28bvJ"
+                            />
+                        </div>
+
+                        <div class="absolute -top-4 -right-4 w-full h-full border-2 border-brand-primary/20 rounded-2xl -z-10"></div>
+
+                        
+                        <div class="hidden lg:block absolute -bottom-8 -left-8 glass-card p-6 rounded-custom shadow-xl">
+
+                            <div class="flex items-center gap-4">
+
+                                <div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-600">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M5 13l4 4L19 7"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                        ></path>
+                                    </svg>
+                                </div>
+
+                                <div>
+                                    <p class="text-xs font-bold text-slate-500">STATO SISTEMA</p>
+                                    <p class="font-bold text-slate-800">100% Operativo</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div> -->
+
+                </div>
+
+            </div>
+
         </section>
         <!-- END: Hero Section -->
         
@@ -345,11 +467,11 @@
                     </div>
 
                     <h3 class="mt-16 text-3xl font-extrabold">
-                        Da NETWORK a TEKWORN
+                        LA TECNOLOGIA CHE SI ADATTA AL TUO BUSINESS
                     </h3>
 
                     <p class="mt-6 text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                        Come riorganizziamo le lettere per formare il nostro nome, così riorganizziamo i processi aziendali per creare efficienza. Abbiamo preso l'integrità strutturale di una <span class="text-white italic">Network</span> e l'abbiamo combinata con l'<span class="text-white italic">Automazione Tecnica</span> per creare TEKWORN.
+                        Come riorganizziamo le lettere per formare il nostro nome, così riorganizziamo i processi aziendali per creare efficienza. Il nostro obiettivo è aiutare le attività a riorganizzare <span class="text-white italic">processi, strumenti e presenza digitale</span> per renderli più<span class="text-white italic"> moderni, efficienti e pronti</span> alle sfide di domani.
                     </p>
 
                     <div class="mt-12 p-8 bg-white/5 border border-white/10 rounded-3xl max-w-2xl mx-auto text-left">
@@ -500,13 +622,15 @@
                             >
                                 <source src="/asset/video/webapp.webm" type="video/mp4">
                             </video>
+                            <!-- OVERLAY -->
+                            <div class="absolute inset-0 bg-black/50"></div>
                         </div>
 
                         <h3 class="text-xl font-bold mb-2">
                             Web App Personalizzate
                         </h3>
 
-                        <p class="text-cyan-50 text-sm">
+                        <p class="text-black-50 text-sm">
                             Sviluppiamo software su misura accessibili da browser, pronti a scalare con le tue necessità aziendali.
                         </p>
 
@@ -1141,6 +1265,23 @@
     <!-- END: Footer -->
    
         <!-- BEGIN: Scripts -->
+        <script>
+                class ThreeJSScene extends HTMLElement {
+                    connectedCallback() {
+                        const container = this;
+                        const src = this.getAttribute('src');
+
+                        if (src) {
+                            const scriptContent = src;
+                            const initScene = new Function('container', scriptContent);
+                            initScene(container);
+                        }
+                    }
+                }
+
+                customElements.define('threejs-scene', ThreeJSScene);
+        </script>
+
          <script data-purpose="preload-animation">
             window.addEventListener('load', () => {
                 document.body.classList.remove('overflow-hidden');
